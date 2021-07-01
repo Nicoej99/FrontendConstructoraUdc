@@ -34,3 +34,7 @@ html {
     position: relative;
     z-index: 2;
   }
+
+  .mensajesValidaciones strong{
+    color: red;
+  }
