@@ -8,4 +8,5 @@ export class UsuarioModelo{
     telefono?: String;
     user?: UsuarioModule;
     tk?: String;
+    isLoggedIn: boolean = false;
 }

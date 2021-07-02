@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { UsuarioModelo } from 'src/app/modelos/usuario.modelos';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
@@ -14,8 +15,8 @@ export class IniciarSesionComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder,
-    private servicioSeguridad: SeguridadService
-    ) {
+    private servicioSeguridad: SeguridadService,
+    private router: Router ) {
 
 
    }
@@ -47,8 +48,8 @@ export class IniciarSesionComponent implements OnInit {
       modelo.clave = claveCifrada;
       this.servicioSeguridad.VerificarUsuario(modelo).subscribe(
         (datos: UsuarioModelo) => {
-          alert("Datos correctos");
-          console.log(datos);
+          this.servicioSeguridad.AlmacenarDatosSesionEnLocal(datos);
+          this.router.navigate(["/inicio"]);
         },
         (error) => {
           alert("Datos inválidos");
