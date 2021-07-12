@@ -28,7 +28,7 @@ export class SeguridadService {
 
   VerificarUsuario(modelo: UsuarioModelo): Observable<any> {
     return this.http.post<any>(
-      `/identificar-usuario`,
+      `${this.url}/identificar-usuario`,
       {
         correo: modelo.correo,
         clave: modelo.clave

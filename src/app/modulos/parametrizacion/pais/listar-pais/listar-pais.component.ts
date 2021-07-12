@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatosGenerales } from 'src/app/config/datos.generales';
 import { PaisModelo } from 'src/app/modelos/pais.modelos';
 import { PaisService } from 'src/app/servicios/pais.service';
 
@@ -9,6 +10,7 @@ import { PaisService } from 'src/app/servicios/pais.service';
 })
 export class ListarPaisComponent implements OnInit {
   pagina : number=1;
+  regPorPagina:  number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: PaisModelo[] = [];
   constructor(private servicio: PaisService) { }
 
