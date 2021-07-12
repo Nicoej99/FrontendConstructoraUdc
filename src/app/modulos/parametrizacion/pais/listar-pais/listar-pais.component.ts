@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PaisModelo } from 'src/app/modelos/pais.modelos';
+import { PaisService } from 'src/app/servicios/pais.service';
 
 @Component({
   selector: 'app-listar-pais',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-pais.component.css']
 })
 export class ListarPaisComponent implements OnInit {
-
-  constructor() { }
+  pagina : number=1;
+  listaRegistros: PaisModelo[] = [];
+  constructor(private servicio: PaisService) { }
 
   ngOnInit(): void {
+    this.ObtenerListadoPais();
+  }
+
+  ObtenerListadoPais() {
+    this.servicio.ListarRegistros().subscribe(
+      (datos) => {
+        this.listaRegistros = datos;
+      },
+      (err) => {
+        alert("Error cargando el listado de registros");
+      }
+    );
+  }
+
+  CambioPagina(p: number){
+    this.pagina = p;
   }
 
 }
