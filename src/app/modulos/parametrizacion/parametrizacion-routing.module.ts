@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
@@ -12,28 +13,36 @@ import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proye
 const routes: Routes = [
   {
     path: 'listar-bloque',
-    component: ListarBloqueComponent
+    component: ListarBloqueComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'listar-ciudad',
-    component: ListarCiudadComponent
+    component: ListarCiudadComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'listar-inmueble',
-    component: ListarInmuebleComponent
+    component: ListarInmuebleComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'listar-pais',
-    component: ListarPaisComponent
+    component: ListarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'crear-pais',
-    component: CrearPaisComponent
+    component: CrearPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'editar-pais/:id',
-    component: EditarPaisComponent
+    component: EditarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'eliminar-pais/:id',
-    component: EliminarPaisComponent
+    component: EliminarPaisComponent,
+    canActivate: [ValidadorSesionGuard]
   },{
     path: 'listar-proyecto',
-    component: ListarProyectoComponent
+    component: ListarProyectoComponent,
+    canActivate: [ValidadorSesionGuard]
   }
 ];
 

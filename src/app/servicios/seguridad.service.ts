@@ -76,6 +76,17 @@ export class SeguridadService {
     }
   }
 
+  ValidarSesionPorToken():boolean {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UsuarioModelo = JSON.parse(datos);
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
 
 
