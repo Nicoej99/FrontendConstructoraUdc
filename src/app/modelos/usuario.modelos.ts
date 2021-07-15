@@ -9,4 +9,7 @@ export class UsuarioModelo{
     user?: UsuarioModule;
     tk?: String;
     isLoggedIn: boolean = false;
+    role?: String;
+    isVendedor: boolean = false;
+    isAdmin: boolean = false;
 }

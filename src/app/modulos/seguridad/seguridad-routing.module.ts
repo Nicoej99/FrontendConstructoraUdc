@@ -2,12 +2,26 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ValidadorNoSesionGuard } from 'src/app/guardianes/validador-no-sesion.guard';
 import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard';
+import { ValidadorVendedorGuard } from 'src/app/guardianes/validador-vendedor.guard';
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ResetearClaveComponent } from './resetear-clave/resetear-clave.component';
+import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { ValidadorAdminGuard } from 'src/app/guardianes/validador-admin.guard';
 
 const routes: Routes = [
+  {
+    path: 'registrar-usuario',
+    component: RegistrarUsuarioComponent,
+    canActivate:[ValidadorSesionGuard, ValidadorAdminGuard]
+  },
+  {
+    path: 'registrar-cliente',
+    component: RegistrarClienteComponent,
+    canActivate:[ValidadorSesionGuard, ValidadorAdminGuard]
+  },
   {
     path: 'iniciar-sesion',
     component: IniciarSesionComponent,

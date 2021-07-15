@@ -6,14 +6,14 @@ import { UsuarioModelo } from 'src/app/modelos/usuario.modelos';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
 @Component({
-  selector: 'app-iniciar-sesion',
-  templateUrl: './iniciar-sesion.component.html',
-  styleUrls: ['./iniciar-sesion.component.css']
+  selector: 'app-registrar-usuario',
+  templateUrl: './registrar-usuario.component.html',
+  styleUrls: ['./registrar-usuario.component.css']
 })
-export class IniciarSesionComponent implements OnInit {
+export class RegistrarUsuarioComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
-
+  
   constructor(private fb: FormBuilder,
     private servicioSeguridad: SeguridadService,
     private router: Router ) {
@@ -28,14 +28,14 @@ export class IniciarSesionComponent implements OnInit {
      });
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.ConstruirFormulario();
   }
 
   get ObtenerFgvalidador() {
     return this.fgValidador.controls;
   }
-
+// MOdificar para q sea el formulario de registro
   ValidarIdentificacion() {
     if (this.fgValidador.invalid) {
       alert("Formulario inválido")

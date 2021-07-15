@@ -12,13 +12,13 @@ export class SeguridadService {
   url: String = DatosGenerales.url;
   datosDeSesion: BehaviorSubject<UsuarioModelo> = new BehaviorSubject<UsuarioModelo>(new UsuarioModelo());
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.VerificarSesion();
   }
 
   VerificarSesion() {
     let datos = localStorage.getItem("session-data");
-    if(datos){
+    if (datos) {
       let datosEnObjeto: UsuarioModelo = JSON.parse(datos);
       datosEnObjeto.isLoggedIn = true;
       this.RefrescarDatosSesion(datosEnObjeto);
@@ -56,6 +56,9 @@ export class SeguridadService {
       let datosString = JSON.stringify(usuarioModelo);
       localStorage.setItem("session-data", datosString);
       usuarioModelo.isLoggedIn = true;
+      this.DefinirRol(usuarioModelo);
+      usuarioModelo.isAdmin = true;
+      console.log("jkahsldgfhkujsadgfhjasgfjhkasdfg")
       this.RefrescarDatosSesion(usuarioModelo);
       return true;
     }
@@ -76,11 +79,34 @@ export class SeguridadService {
     }
   }
 
-  ValidarSesionPorToken():boolean {
+  DefinirRol(modelo: UsuarioModelo) {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let rol: UsuarioModelo = JSON.parse(datos);
+      switch (rol.role) {
+        case "6068f2c6b4388d860e4e2a3a":
+          alert("Admin")
+          modelo.isAdmin = true;
+          return true;
+          break;
+        case "6068f354b4388d860e4e2a3b":
+          alert("Vendedor")
+          modelo.isVendedor = true;
+          return true;
+          break;
+        default:
+          return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+
+  ValidarSesionPorToken(): boolean {
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let obj: UsuarioModelo = JSON.parse(datos);
-
       return true;
     } else {
       return false;

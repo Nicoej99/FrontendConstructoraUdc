@@ -7,6 +7,10 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { ResetearClaveComponent } from './resetear-clave/resetear-clave.component';
 import { CambiarClaveComponent } from './cambiar-clave/cambiar-clave.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
 
 @NgModule({
@@ -14,7 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IniciarSesionComponent,
     CerrarSesionComponent,
     ResetearClaveComponent,
-    CambiarClaveComponent
+    CambiarClaveComponent,
+    RegistrarUsuarioComponent,
+    RegistrarClienteComponent,
+    EditarClienteComponent,
+    EditarUsuarioComponent
   ],
   imports: [
     CommonModule,

@@ -27,6 +27,7 @@ export class PaisService {
   }
 
   AlmacenarRegistro(modelo: PaisModelo): Observable<PaisModelo> {
+    console.log(modelo)
     return this.http.post<PaisModelo>(
       `${this.url}/pais`,
       {

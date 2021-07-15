@@ -10,6 +10,8 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 export class BarraNavegacionSuperiorComponent implements OnInit {
 
   isLoggedIn: boolean = false;
+  isVendedor: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private servicioSeguridad: SeguridadService) { }
 
@@ -18,7 +20,10 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
   ngOnInit(): void {
     this.suscripcion = this.servicioSeguridad.ObtenerDatosSesion().subscribe(
       (datos) => {
+        console.log(datos)
         this.isLoggedIn = datos.isLoggedIn;
+        this.isVendedor = datos.isVendedor;
+        this.isAdmin = datos.isAdmin;
       },
       (error) => {
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ValidadorSesionGuard } from 'src/app/guardianes/validador-sesion.guard';
+import { ValidadorVendedorGuard } from 'src/app/guardianes/validador-vendedor.guard';
 import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
