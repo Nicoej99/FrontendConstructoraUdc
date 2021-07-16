@@ -25,6 +25,7 @@ export class EditarCiudadComponent implements OnInit {
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
       nombre: ['', [Validators.required]], 
+      paisid: ['', [Validators.required]], 
       id: ['', [Validators.required]], 
     
      });
@@ -40,12 +41,14 @@ export class EditarCiudadComponent implements OnInit {
   }
 
   ModificarRegistro() {
-    let nom = this.ObtenerFgValidador.nombre.value;
     let cod = this.ObtenerFgValidador.codigo.value;
+    let nom = this.ObtenerFgValidador.nombre.value;
+    let paisid = this.ObtenerFgValidador.paisid.value;
     let id = this.ObtenerFgValidador.id.value;
     let modelo: CiudadModelo = new CiudadModelo();
-    modelo.nombre = nom;
     modelo.codigo = cod;
+    modelo.nombre = nom;
+    modelo.paisId = paisid;
     modelo.id = id;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) =>{
@@ -59,11 +62,11 @@ export class EditarCiudadComponent implements OnInit {
   }
 
   ObtenerRegistroPorId(id: number) {
-    console.log("Aqui pendejos"+id);
     this.servicio.BuscarRegistro(id).subscribe(
       (datos) => {
         this.ObtenerFgValidador.codigo.setValue(datos.codigo);
         this.ObtenerFgValidador.nombre.setValue(datos.nombre);
+        this.ObtenerFgValidador.paisid.setValue(datos.paisId);
         this.ObtenerFgValidador.id.setValue(datos.id);
       },
       (err) => {

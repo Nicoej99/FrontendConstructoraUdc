@@ -24,6 +24,7 @@ export class CrearCiudadComponent implements OnInit {
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
       nombre: ['', [Validators.required]], 
+      paisid: ['', [Validators.required]], 
     
      });
    }
@@ -38,9 +39,11 @@ export class CrearCiudadComponent implements OnInit {
   GuardarRegistro() {
     let nom = this.ObtenerFgValidador.nombre.value;
     let cod = this.ObtenerFgValidador.codigo.value;
+    let paisid = this.ObtenerFgValidador.paisid.value;
     let modelo: CiudadModelo = new CiudadModelo();
-    modelo.nombre = nom;
     modelo.codigo = cod;
+    modelo.nombre = nom;
+    modelo.paisId = paisid;
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");

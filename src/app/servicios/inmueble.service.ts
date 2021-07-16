@@ -29,10 +29,12 @@ export class InmuebleService {
   AlmacenarRegistro(modelo: InmuebleModelo): Observable<InmuebleModelo> {
     console.log(modelo)
     return this.http.post<InmuebleModelo>(
-      `${this.url}/inmueble`,
+      `${this.url}/inmueble`,     
       {
         codigo: modelo.codigo,
-        nombre: modelo.identificador
+        identificador: modelo.identificador,
+        valor: modelo.valor,
+        bloqueId: modelo.bloqueId
       },
       {
         headers: new HttpHeaders({
@@ -46,7 +48,9 @@ export class InmuebleService {
       `${this.url}/inmueble/${modelo.id}`,
       {
         codigo: modelo.codigo,
-        nombre: modelo.identificador
+        identificador: modelo.identificador,
+        valor: modelo.valor,
+        bloqueId: modelo.bloqueId
       },
       {
         headers: new HttpHeaders({

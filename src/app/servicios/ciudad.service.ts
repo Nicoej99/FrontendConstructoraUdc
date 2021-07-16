@@ -32,7 +32,8 @@ export class CiudadService {
       `${this.url}/ciudad`,
       {
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        paisId: modelo.paisId
       },
       {
         headers: new HttpHeaders({
@@ -46,7 +47,8 @@ export class CiudadService {
       `${this.url}/ciudad/${modelo.id}`,
       {
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        paisId: modelo.paisId
       },
       {
         headers: new HttpHeaders({

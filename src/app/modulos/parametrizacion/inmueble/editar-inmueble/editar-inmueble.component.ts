@@ -24,7 +24,9 @@ export class EditarInmuebleComponent implements OnInit {
    ConstruirFormulario(){
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
-      nombre: ['', [Validators.required]], 
+      identificador: ['', [Validators.required]], 
+      valor: ['', [Validators.required]], 
+      bloqueid: ['', [Validators.required]], 
       id: ['', [Validators.required]], 
     
      });
@@ -40,12 +42,16 @@ export class EditarInmuebleComponent implements OnInit {
   }
 
   ModificarRegistro() {
-    let nom = this.ObtenerFgValidador.nombre.value;
     let cod = this.ObtenerFgValidador.codigo.value;
+    let identificador = this.ObtenerFgValidador.identificador.value;
+    let valor = this.ObtenerFgValidador.valor.value;
+    let bloqueid = this.ObtenerFgValidador.bloqueid.value;
     let id = this.ObtenerFgValidador.id.value;
     let modelo: InmuebleModelo = new InmuebleModelo();
-    modelo.identificador = nom;
     modelo.codigo = cod;
+    modelo.identificador = identificador;
+    modelo.valor = valor;
+    modelo.bloqueId = bloqueid;
     modelo.id = id;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) =>{

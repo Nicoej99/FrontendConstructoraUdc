@@ -26,7 +26,6 @@ export class CrearInmuebleComponent implements OnInit {
       identificador: ['', [Validators.required]], 
       valor: ['', [Validators.required]], 
       bloqueid: ['', [Validators.required]], 
-      // puede ser bloqueId
      });
    }
 
@@ -38,7 +37,7 @@ export class CrearInmuebleComponent implements OnInit {
   }
 
   GuardarRegistro() {
-    let cod = this.ObtenerFgValidador.cod.value;
+    let cod = this.ObtenerFgValidador.codigo.value;
     let identificador = this.ObtenerFgValidador.identificador.value;
     let valor = this.ObtenerFgValidador.valor.value;
     let bloqueid = this.ObtenerFgValidador.bloqueid.value;
@@ -47,6 +46,8 @@ export class CrearInmuebleComponent implements OnInit {
     modelo.identificador = identificador;
     modelo.valor = valor;
     modelo.bloqueId = bloqueid;
+
+    
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");
