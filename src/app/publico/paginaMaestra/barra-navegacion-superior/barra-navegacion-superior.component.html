@@ -1,3 +1,8 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li class="divider"></li>
+    <li><a href="#!">Cambiar Constraseña</a></li>
+    <li ><a href="#!">Cerrar Sesion</a></li>
+  </ul>
 <nav>
   <div class="nav-wrapper">
     <a routerLink="/" class="brand-logo">Logo</a>
@@ -12,6 +17,8 @@
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
+      <li *ngIf="isLoggedIn"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Opciones de usuario<i class="material-icons right">arrow_drop_down</i></a></li>
+    
     </ul>
   </div>
 </nav>

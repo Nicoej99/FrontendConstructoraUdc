@@ -20,11 +20,11 @@ export class ClienteService {
   }
 
   ListarRegistros(): Observable<ClienteModelo[]>{
-    return this.http.get<ClienteModelo[]>(`${this.url}/inmueble`);
+    return this.http.get<ClienteModelo[]>(`${this.url}/cliente`);
   }
 
   BuscarRegistro(id : number): Observable<ClienteModelo>{
-    return this.http.get<ClienteModelo>(`${this.url}/inmueble/${id}`);
+    return this.http.get<ClienteModelo>(`${this.url}/cliente/${id}`);
   }
 
   AlmacenarRegistro(modelo: ClienteModelo): Observable<ClienteModelo> {
@@ -86,7 +86,7 @@ export class ClienteService {
 
   EliminarRegistro(id: number): Observable<ClienteModelo> {
     return this.http.delete<ClienteModelo>(
-      `${this.url}/inmueble/${id}`,
+      `${this.url}/cliente/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`

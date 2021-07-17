@@ -1,54 +1,110 @@
-<div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">Nombres</label>
+<fieldset>
+    <legend>Formulario para nuevos usuarios</legend>
+    <div class="row">
+        <form [formGroup]="fgValidador" class="col s12" id="reg-form">
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="document" formControlName="document" type="number">
+                    <label for="document">Documento</label>
+                    <div class="warning-validator" *ngIf="fgv.document.errors && (fgv.document.dirty || fgv.document.touched)">
+                        <strong *ngIf="fgv.document.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.document.errors.minlength">
+                            Este campo debe tener al menos {{documentMinLength}} caracteres.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">phone</i>
+                    <input formControlName="phone" id="cellphone" type="text">
+                    <label for="cellphone">Celular</label>
+                    <div class="warning-validator" *ngIf="fgv.phone.errors && (fgv.phone.dirty || fgv.phone.touched)">
+                        <strong *ngIf="fgv.phone.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.phone.errors.minlength">
+                            Este campo debe tener al menos 12 digitos.
+                        </strong>
+                        <strong *ngIf="fgv.phone.errors.maxlength">
+                            Este campo no debe tener mas de 14 digitos.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">email</i>
+                    <input formControlName="email" id="email" type="email">
+                    <label for="email">Email</label>
+                    <div class="warning-validator" *ngIf="fgv.email.errors && (fgv.email.dirty || fgv.email.touched)">
+                        <strong *ngIf="fgv.email.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.email.errors.email">
+                            Ingrese una dirección de correo valida.
+                        </strong>
+                    </div>
+                </div>
             </div>
-            <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate">
-                <label for="last_name">Apellidos</label>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="name" id="first_name" type="text">
+                    <label for="first_name">Nombres</label>
+                    <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)">
+                        <strong *ngIf="fgv.name.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.name.errors.minlength">
+                            Debe tener al menos 2 caracteres.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="lastname" id="last_name" type="text">
+                    <label for="last_name">Apellidos</label>
+                    <div class="warning-validator" *ngIf="fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)">
+                        <strong *ngIf="fgv.lastname.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.lastname.errors.minlength">
+                            Debe tener al menos 2 caracteres.
+                        </strong>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="document" type="text" class="validate">
-                <label for="document">Documento</label>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">map</i>
+                    <input formControlName="city" id="city" type="number">
+                    <label for="city">Ciudad</label>
+                    <div class="warning-validator" *ngIf="fgv.city.errors && (fgv.city.dirty || fgv.city.touched)">
+                        <strong *ngIf="fgv.city.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.city.errors.minlength">
+                            Debe tener al menos 3 caracteres.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s3">
+                    <select id="role" type="number">
+                      <option value="" disabled selected>Elige el rol adecuado</option>
+                      <option value="1">Administrador</option>
+                      <option value="2">Vendedor</option>
+                    </select>
+                    <label>Rol de usuario</label>
+                  </div>
             </div>
-            <div class="input-field col s6">
-                <input id="cellphone" type="number" class="validate">
-                <label for="cellphone">Celular</label>
+            <div class="row">
+                <div class="input-field col s6">
+                    <button (click)="ValidarIdentificacion()" class="btn btn-large btn-register waves-effect waves-light" type="button"
+                        name="action">Register
+                        <i class="material-icons right">done</i>
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-            </div>
-        </div>
-        <label>Tipos de rol</label>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="city" type="text" class="validate">
-                <label for="city">Ciudad de trabajo</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                
-                <select>
-                    <option value="" disabled selected>Elije el rol</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Vendedor</option>
-                </select>
-                
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">Crear</i>
-            </button>
-        </div>
-       
-    </form>
-</div>
+        </form>
+    </div>
+</fieldset>
