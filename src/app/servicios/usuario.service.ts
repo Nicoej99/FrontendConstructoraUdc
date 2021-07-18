@@ -28,16 +28,7 @@ export class UsuarioService {
   }
 
   AlmacenarRegistro(modelo: UsuarioModelo): Observable<UsuarioModelo> {
-    console.log("estamos en almacenar registro"+modelo)
-    console.log(modelo.nombre)
-    console.log(modelo.apellido)
-    console.log(modelo.documento)
-    console.log(modelo.ciudadId)
-    console.log(modelo.correo)
-    console.log(modelo.telefono)
-    console.log(modelo.role)
-    console.log(modelo.ciudadId)
-
+   
     return this.http.post<UsuarioModelo>(
       `${this.url}/user`,     
       {

@@ -1,19 +1,20 @@
 import { UsuarioModule } from "../modulos/usuario/usuario.module";
 
 export class UsuarioModelo{
-    id?: String;
-    correo?: String;
-    clave?: String;
-    tipoUsuarioId?: String;
-    telefono?: String;
-    user?: UsuarioModule;
-    documento?: number;
+    id?: number;
     nombre?: string;
     apellido?: string;
+    documento?: number;
+    correo?: String;
+    telefono?: String;
+    role?: String;
     ciudadId?: number;
+
+    clave?: String;
+    tipoUsuarioId?: String;
+    user?: UsuarioModule;
     tk?: String;
     isLoggedIn: boolean = false;
-    role?: number;
     isVendedor: boolean = false;
     isAdmin: boolean = false;
     username?: String;
