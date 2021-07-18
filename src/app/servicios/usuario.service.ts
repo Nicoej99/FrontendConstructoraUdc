@@ -38,11 +38,9 @@ export class UsuarioService {
     console.log(modelo.role)
     console.log(modelo.ciudadId)
 
-
     return this.http.post<UsuarioModelo>(
       `${this.url}/user`,     
       {
-
         nombre: modelo.nombre,
         apellido: modelo.apellido,
         documento: modelo.documento,
@@ -50,7 +48,6 @@ export class UsuarioService {
         numCelular: modelo.telefono,
         rol: modelo.role,
         ciudadId: modelo.ciudadId
-
       },
       {
         headers: new HttpHeaders({
@@ -70,7 +67,6 @@ export class UsuarioService {
         numCelular: modelo.telefono,
         rol: modelo.role,
         ciudadId: modelo.ciudadId
-
       },
       {
         headers: new HttpHeaders({
