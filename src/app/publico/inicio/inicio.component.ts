@@ -21,8 +21,9 @@ export class InicioComponent implements OnInit {
   constructor(private servicio: InicioService) { }
 
   ngOnInit(): void {
-    iniciarDesplegable();
     this.ObtenerCorreoCliente();
+    iniciarDesplegable();
+    
   }
 
   

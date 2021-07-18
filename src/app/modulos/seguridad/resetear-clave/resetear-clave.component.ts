@@ -40,7 +40,7 @@ export class ResetearClaveComponent implements OnInit {
     modelo.email = this.ObtenerFgvalidador.email.value;
     this.servicio.ResetearPassword(modelo).subscribe(
       (datos) =>{
-        alert("Registro almacenado correctamente.");
+        alert("Constraseña cambiada correctamente.");
         this.router.navigate(["/inicio"]);
       },
       (err) =>{

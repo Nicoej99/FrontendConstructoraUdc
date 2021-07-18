@@ -12,6 +12,8 @@ import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
+import { InfoFinancieraComponent } from './info-financiera/info-financiera.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
     RegistrarUsuarioComponent,
     RegistrarClienteComponent,
     EditarClienteComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    InfoFinancieraComponent
   ],
   imports: [
     CommonModule,
