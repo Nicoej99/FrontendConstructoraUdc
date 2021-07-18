@@ -24,6 +24,8 @@ export class CrearBloqueComponent implements OnInit {
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
       nombre: ['', [Validators.required]], 
+      descripcion: ['', [Validators.required]], 
+      proyectoid: ['', [Validators.required]], 
     
      });
    }
@@ -36,11 +38,12 @@ export class CrearBloqueComponent implements OnInit {
   }
 
   GuardarRegistro() {
-    let nom = this.ObtenerFgValidador.nombre.value;
-    let cod = this.ObtenerFgValidador.codigo.value;
+
     let modelo: BloqueModelo = new BloqueModelo();
-    modelo.nombre = nom;
-    modelo.codigo = cod;
+    modelo.nombre = this.ObtenerFgValidador.nombre.value;
+    modelo.codigo = this.ObtenerFgValidador.codigo.value;
+    modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
+    modelo.proyectoId = this.ObtenerFgValidador.proyectoid.value;
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");

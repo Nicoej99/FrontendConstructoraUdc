@@ -25,6 +25,9 @@ export class EditarProyectoComponent implements OnInit {
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
       nombre: ['', [Validators.required]], 
+      imagen: ['', [Validators.required]], 
+      descripcion: ['', [Validators.required]], 
+      ciudadid: ['', [Validators.required]], 
       id: ['', [Validators.required]], 
     
      });
@@ -40,13 +43,14 @@ export class EditarProyectoComponent implements OnInit {
   }
 
   ModificarRegistro() {
-    let nom = this.ObtenerFgValidador.nombre.value;
-    let cod = this.ObtenerFgValidador.codigo.value;
-    let id = this.ObtenerFgValidador.id.value;
+
     let modelo: ProyectoModelo = new ProyectoModelo();
-    modelo.nombre = nom;
-    modelo.codigo = cod;
-    modelo.id = id;
+    modelo.nombre = this.ObtenerFgValidador.nombre.value;;
+    modelo.codigo = this.ObtenerFgValidador.codigo.value;
+    modelo.imagen = this.ObtenerFgValidador.imagen.value;
+    modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
+    modelo.ciudadId = this.ObtenerFgValidador.ciudadid.value;
+    modelo.id =this.ObtenerFgValidador.id.value;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro modificado correctamente.");
@@ -64,6 +68,8 @@ export class EditarProyectoComponent implements OnInit {
       (datos) => {
         this.ObtenerFgValidador.codigo.setValue(datos.codigo);
         this.ObtenerFgValidador.nombre.setValue(datos.nombre);
+        this.ObtenerFgValidador.descripcion.setValue(datos.descripcion);
+        this.ObtenerFgValidador.ciudadid.setValue(datos.ciudadId);
         this.ObtenerFgValidador.id.setValue(datos.id);
       },
       (err) => {
