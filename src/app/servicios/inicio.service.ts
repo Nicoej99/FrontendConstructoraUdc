@@ -22,8 +22,8 @@ export class InicioService {
 
   
 
-  obtenerCorreo(correo: String): Observable<ClienteModelo>{
-    return this.http.get<ClienteModelo>(`${this.url}/Cliente/correo-electronico/${correo}`);
+  obtenerCorreo(correo: String): Observable<UsuarioModelo>{
+    return this.http.get<UsuarioModelo>(`${this.url}/User/correo-electronico/${correo}`);
   }
 
   

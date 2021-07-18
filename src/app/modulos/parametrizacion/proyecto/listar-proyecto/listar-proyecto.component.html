@@ -14,6 +14,15 @@
                 Nombre
             </th>
             <th>
+                Imagen
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                ciudadId
+            </th>
+            <th>
                 Acciones
             </th>
         </tr>
@@ -28,6 +37,15 @@
             </th>
             <th>
                 {{r.nombre}}
+            </th>
+            <th>
+                {{r.imagen}}
+            </th>
+            <th>
+                {{r.descripcion}}
+            </th>
+            <th>
+                {{r.ciudadId}}
             </th>
             <th>
                 <a class="waves-effect orange waves-light btn" routerLink="/parametros/editar-proyecto/{{r.id}}" ><i class="material-icons left">edit</i>Modificar</a>

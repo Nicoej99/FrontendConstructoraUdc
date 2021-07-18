@@ -21,20 +21,23 @@ export class InicioComponent implements OnInit {
   constructor(private servicio: InicioService) { }
 
   ngOnInit(): void {
-    iniciarDesplegable();
     this.ObtenerCorreoCliente();
+    iniciarDesplegable();
   }
 
   
 
   ObtenerCorreoCliente() {
 
-
+    
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let rol = JSON.parse(datos);
       this.servicio.obtenerCorreo(rol.username).subscribe(
         (datos) => {
+          console.log("+++++++------")
+          console.log(datos)
+          console.log("+++++++------")
           inyectarCodigo(datos.nombre,datos.apellido);
         },
         (err) => {
