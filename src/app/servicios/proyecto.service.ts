@@ -32,7 +32,10 @@ export class ProyectoService {
       `${this.url}/proyecto`,
       {
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        imagen: modelo.imagen,
+        descripcion: modelo.descripcion,
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -46,7 +49,10 @@ export class ProyectoService {
       `${this.url}/proyecto/${modelo.id}`,
       {
         codigo: modelo.codigo,
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        imagen: modelo.imagen,
+        descripcion: modelo.descripcion,
+        ciudadId: modelo.ciudadId
       },
       {
         headers: new HttpHeaders({
@@ -58,6 +64,21 @@ export class ProyectoService {
   EliminarRegistro(id: number): Observable<ProyectoModelo> {
     return this.http.delete<ProyectoModelo>(
       `${this.url}/proyecto/${id}`,
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
+  }
+
+
+  AlmacenarImagen(): Observable<ProyectoModelo> {
+    console.log("entrar en cargar imagenasjdfhsdkfhsdkfg")
+    return this.http.post<ProyectoModelo>(
+      `${this.url}/CargarImagenProyecto`,
+      {
+       
+      },
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`

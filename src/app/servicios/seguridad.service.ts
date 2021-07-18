@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
@@ -27,6 +28,8 @@ export class SeguridadService {
 
 
   VerificarUsuario(modelo: UsuarioModelo): Observable<any> {
+
+    
     return this.http.post<any>(
       `${this.url}/identificar-usuario`,
       {
@@ -83,7 +86,8 @@ export class SeguridadService {
     let datos = localStorage.getItem("session-data");
     if (datos) {
       let rol: UsuarioModelo = JSON.parse(datos);
-      switch (rol.role) {
+      
+      switch (String(rol.role)) {
         case "6068f2c6b4388d860e4e2a3a":
           alert("Admin")
           modelo.isAdmin = true;

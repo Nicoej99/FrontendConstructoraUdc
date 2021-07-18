@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelos';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 
+declare var iniciarImagen: any;
+
 @Component({
   selector: 'app-crear-proyecto',
   templateUrl: './crear-proyecto.component.html',
@@ -24,23 +26,30 @@ export class CrearProyectoComponent implements OnInit {
      this.fgValidador = this.fb.group({
       codigo: ['', [Validators.required]], 
       nombre: ['', [Validators.required]], 
+      imagen: ['', [Validators.required]], 
+      descripcion: ['', [Validators.required]], 
+      ciudadid: ['', [Validators.required]], 
     
      });
    }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
+    iniciarImagen();
+    console.log(this.servicio.AlmacenarImagen());
   }
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
   }
 
   GuardarRegistro() {
-    let nom = this.ObtenerFgValidador.nombre.value;
-    let cod = this.ObtenerFgValidador.codigo.value;
+    
     let modelo: ProyectoModelo = new ProyectoModelo();
-    modelo.nombre = nom;
-    modelo.codigo = cod;
+    modelo.nombre = this.ObtenerFgValidador.nombre.value;;
+    modelo.codigo = this.ObtenerFgValidador.codigo.value;
+    modelo.imagen = this.ObtenerFgValidador.imagen.value;
+    modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
+    modelo.ciudadId = this.ObtenerFgValidador.ciudadid.value;
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");

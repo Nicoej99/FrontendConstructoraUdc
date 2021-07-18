@@ -7,9 +7,14 @@ export class UsuarioModelo{
     tipoUsuarioId?: String;
     telefono?: String;
     user?: UsuarioModule;
+    documento?: number;
+    nombre?: string;
+    apellido?: string;
+    ciudadId?: number;
     tk?: String;
     isLoggedIn: boolean = false;
-    role?: String;
+    role?: number;
     isVendedor: boolean = false;
     isAdmin: boolean = false;
+    username?: String;
 }

@@ -9,8 +9,12 @@ import { ClienteModule } from '../../cliente/cliente.module';
 import { ClienteModelo } from 'src/app/modelos/cliente.modelos';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { PaisModelo } from 'src/app/modelos/pais.modelos';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { element } from 'protractor';
+import { getHtmlTagDefinition } from '@angular/compiler';
 
 declare var iniciarSelect: any;
+declare var agregarCiudades: any;
 
 @Component({
   selector: 'app-registrar-cliente',
@@ -22,6 +26,7 @@ export class RegistrarClienteComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   documentMinLength = FormsConfig.DOCUMENT_MIN_LENGTH;
   nameMinLength = FormsConfig.NAME_MIN_LENGTH;
+  listaRegistros: CiudadModelo[] = [];
   
   constructor(private fb: FormBuilder,
     private servicio: ClienteService,
@@ -46,6 +51,9 @@ export class RegistrarClienteComponent implements OnInit {
    ngOnInit(): void {
     this.ConstruirFormulario();
     iniciarSelect();
+    //this.obtenerCiudades();
+    
+    
   }
 
   get ObtenerFgvalidador() {
@@ -53,13 +61,12 @@ export class RegistrarClienteComponent implements OnInit {
   }
 
   ValidarIdentificacion() {
+
     alert(this.fgValidador.invalid+"es aqui")
     if (this.fgValidador.invalid) {
       alert("Formulario inválido, no entro")
     } else {
-      alert("entro")
       let model = this.getClienteData();
-      console.log(model);
       this.servicio.AlmacenarRegistro(model).subscribe(
         (datos) =>{
           alert("Registro almacenado correctamente.");
@@ -92,6 +99,19 @@ export class RegistrarClienteComponent implements OnInit {
 
   get fgv() {
     return this.fgValidador.controls;
+  }
+
+  obtenerCiudades(){
+    this.servicio.ListarCiudad().subscribe(
+      (datos) => {
+        this.listaRegistros = datos;
+        agregarCiudades(this.listaRegistros);
+        
+      },
+      (err) => {
+        alert("Error cargando el listado de registros");
+      }
+    );
   }
 
 }

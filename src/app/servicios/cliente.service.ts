@@ -20,27 +20,19 @@ export class ClienteService {
   }
 
   ListarRegistros(): Observable<ClienteModelo[]>{
-    return this.http.get<ClienteModelo[]>(`${this.url}/inmueble`);
+    return this.http.get<ClienteModelo[]>(`${this.url}/cliente`);
   }
 
+  ListarCiudad(): Observable<ClienteModelo[]>{//ciudades 
+    return this.http.get<ClienteModelo[]>(`${this.url}/ciudad`);
+  }
+
+
   BuscarRegistro(id : number): Observable<ClienteModelo>{
-    return this.http.get<ClienteModelo>(`${this.url}/inmueble/${id}`);
+    return this.http.get<ClienteModelo>(`${this.url}/cliente/${id}`);
   }
 
   AlmacenarRegistro(modelo: ClienteModelo): Observable<ClienteModelo> {
-    console.log("estamos en almacenar registro"+modelo)
-    console.log(modelo.id)
-    console.log(modelo.ciudadId)
-    console.log(modelo.apellido)
-    console.log(modelo.nombre)
-    console.log(modelo.correoElectronico)
-    console.log(modelo.direccion)
-    console.log(modelo.documento)
-    console.log(modelo.fechaNacimiento)
-    console.log(modelo.foto)
-    console.log(modelo.numCelular)
-    
-
     return this.http.post<ClienteModelo>(
       `${this.url}/cliente`,     
       {
@@ -86,13 +78,15 @@ export class ClienteService {
 
   EliminarRegistro(id: number): Observable<ClienteModelo> {
     return this.http.delete<ClienteModelo>(
-      `${this.url}/inmueble/${id}`,
+      `${this.url}/cliente/${id}`,
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`
         })
       });
   }
+
+
 
   CustomerRegistering(cliente: ClienteModelo): Observable<ClienteModelo> {
     return this.http.post<ClienteModelo>(`${this.http}${this.entity}`, cliente, {

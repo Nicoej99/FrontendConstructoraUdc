@@ -7,7 +7,8 @@
                     <i class="material-icons prefix">assignment_ind</i>
                     <input id="document" formControlName="document" type="number">
                     <label for="document">Documento</label>
-                    <div class="warning-validator" *ngIf="fgv.document.errors && (fgv.document.dirty || fgv.document.touched)">
+                    <div class="warning-validator"
+                        *ngIf="fgv.document.errors && (fgv.document.dirty || fgv.document.touched)">
                         <strong *ngIf="fgv.document.errors.required">
                             Este dato es necesario.
                         </strong>
@@ -64,7 +65,8 @@
                     <i class="material-icons prefix">account_circle</i>
                     <input formControlName="lastname" id="last_name" type="text">
                     <label for="last_name">Apellidos</label>
-                    <div class="warning-validator" *ngIf="fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)">
+                    <div class="warning-validator"
+                        *ngIf="fgv.lastname.errors && (fgv.lastname.dirty || fgv.lastname.touched)">
                         <strong *ngIf="fgv.lastname.errors.required">
                             Este dato es necesario.
                         </strong>
@@ -92,7 +94,8 @@
                     <i class="material-icons prefix">add_location</i>
                     <input formControlName="address" id="address" type="text">
                     <label for="address">Dirección</label>
-                    <div class="warning-validator" *ngIf="fgv.address.errors && (fgv.address.dirty || fgv.address.touched)">
+                    <div class="warning-validator"
+                        *ngIf="fgv.address.errors && (fgv.address.dirty || fgv.address.touched)">
                         <strong *ngIf="fgv.address.errors.required">
                             Este dato es necesario.
                         </strong>
@@ -103,33 +106,35 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="container">
-                        <div class="section">
-                            <div class="row">
-                                <div class="input-field col s5">
-                                    <label class="active" for="birthdate">Fecha de nacimiento:</label>
-                                    <input formControlName="birthdate" type="date" id="birthdate" name="nacimiento">
-                                </div>
+                <div class="container">
+                    <div class="section">
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <label class="active" for="birthdate">Fecha de nacimiento:</label>
+                                <input formControlName="birthdate" type="date" id="birthdate" name="nacimiento">
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
             <div class="row">
                 <br>
-                <div class="input-field col s3">
+                <div id="miSelect" class="input-field col s3">
                     <select>
                         <option value="" disabled selected>Países</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        <option value="12">colombia</option>
+                        <option value="13">ecuador</option>
+                        <option value="14">brazil</option>
+                        <option value="15">peru</option>
                     </select>
                     <label>Elige tu país</label>
+                    <br>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <button (click)="ValidarIdentificacion()" class="btn btn-large btn-register waves-effect waves-light" type="button"
-                        name="action">Register
+                    <button (click)="ValidarIdentificacion()"
+                        class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Register
                         <i class="material-icons right">done</i>
                     </button>
                 </div>

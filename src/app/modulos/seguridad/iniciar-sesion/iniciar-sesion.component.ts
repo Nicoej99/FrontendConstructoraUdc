@@ -24,7 +24,7 @@ export class IniciarSesionComponent implements OnInit {
    ConstruirFormulario(){
      this.fgValidador = this.fb.group({
       usuario: ['santiago.1701621469@ucaldas.edu.co', [Validators.required, Validators.email]],
-      clave: ['sYKp3GalGd', [Validators.required, Validators.min(3)]]
+      clave: ['prog1', [Validators.required, Validators.min(3)]]
      });
    }
 
@@ -57,6 +57,10 @@ export class IniciarSesionComponent implements OnInit {
         }
       );
     }
+  }
+
+  ResetPassword(){
+    this.router.navigate(["/seguridad/resetear-clave"]);
   }
 
 }
