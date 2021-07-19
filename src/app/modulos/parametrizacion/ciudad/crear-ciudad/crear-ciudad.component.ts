@@ -10,15 +10,16 @@ import { PaisService } from 'src/app/servicios/pais.service';
   selector: 'app-crear-ciudad',
   templateUrl: './crear-ciudad.component.html',
   styleUrls: ['./crear-ciudad.component.css']
+  
 })
 export class CrearCiudadComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
-  ListaPais: PaisModelo[] = [];
+  ListaPais: PaisModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService,
-    private serviciopais:PaisService,
+    private serviciopais: PaisService,
     private router: Router ) {
 
 
