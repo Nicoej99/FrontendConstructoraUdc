@@ -13,6 +13,11 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 
 import { InfoFinancieraComponent } from './info-financiera/info-financiera.component';
+import { CrearSolicitudComponent } from './solicitud/crear-solicitud/crear-solicitud.component';
+import { EditarSolicitudComponent } from './solicitud/editar-solicitud/editar-solicitud.component';
+import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-solicitud.component';
+import { EliminarSolicitudComponent } from './solicitud/eliminar-solicitud/eliminar-solicitud.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -25,11 +30,16 @@ import { InfoFinancieraComponent } from './info-financiera/info-financiera.compo
     RegistrarClienteComponent,
     EditarClienteComponent,
     EditarUsuarioComponent,
-    InfoFinancieraComponent
+    InfoFinancieraComponent,
+    CrearSolicitudComponent,
+    EditarSolicitudComponent,
+    ListarSolicitudComponent,
+    EliminarSolicitudComponent
   ],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
+    NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule
   ]

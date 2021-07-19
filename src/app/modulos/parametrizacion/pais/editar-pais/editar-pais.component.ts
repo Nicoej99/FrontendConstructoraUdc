@@ -60,7 +60,6 @@ export class EditarPaisComponent implements OnInit {
   }
 
   ObtenerRegistroPorId(id: number) {
-    console.log("Aqui pendejos"+id);
     this.servicio.BuscarRegistro(id).subscribe(
       (datos) => {
         this.ObtenerFgValidador.codigo.setValue(datos.codigo);

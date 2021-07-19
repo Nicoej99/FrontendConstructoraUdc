@@ -10,6 +10,10 @@ import { ResetearClaveComponent } from './resetear-clave/resetear-clave.componen
 import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { ValidadorAdminGuard } from 'src/app/guardianes/validador-admin.guard';
+import { CrearSolicitudComponent } from './solicitud/crear-solicitud/crear-solicitud.component';
+import { EditarSolicitudComponent } from './solicitud/editar-solicitud/editar-solicitud.component';
+import { EliminarSolicitudComponent } from './solicitud/eliminar-solicitud/eliminar-solicitud.component';
+import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-solicitud.component';
 
 const routes: Routes = [
   {
@@ -41,7 +45,27 @@ const routes: Routes = [
     path: 'cambiar-clave',
     component : CambiarClaveComponent,
     canActivate:[ValidadorSesionGuard]
-  }
+  },
+  
+  
+  {
+    path: 'crear-solicitud',
+    component: CrearSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  },{
+    path: 'editar-solicitud/:id',
+    component: EditarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  },{
+    path: 'eliminar-solicitud/:id',
+    component: EliminarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  },{
+    path: 'listar-solicitud',
+    component: ListarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  },
+
 ];
 
 @NgModule({

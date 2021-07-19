@@ -36,9 +36,6 @@ export class InicioComponent implements OnInit {
       let rol = JSON.parse(datos);
       this.servicio.obtenerCorreo(rol.username).subscribe(
         (datos) => {
-          console.log("+++++++------")
-          console.log(datos)
-          console.log("+++++++------")
           inyectarCodigo(datos.nombre,datos.apellido);
         },
         (err) => {
