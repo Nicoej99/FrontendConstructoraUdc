@@ -8,6 +8,7 @@
     <a id="logoss" routerLink="/" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
+      <li *ngIf="isAdmin"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
       <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
       <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloque">Bloque</a></li>

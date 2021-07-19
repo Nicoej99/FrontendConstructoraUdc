@@ -44,7 +44,8 @@ export class RegistrarClienteComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.minLength(5)]],
       city: ['', [Validators.required, Validators.minLength(3)]],
-      birthdate: ['',[Validators.required]]
+      birthdate: ['',[Validators.required]],
+      cliente: ['']
     });
    }
 
@@ -70,7 +71,7 @@ export class RegistrarClienteComponent implements OnInit {
       this.servicio.AlmacenarRegistro(model).subscribe(
         (datos) =>{
           alert("Registro almacenado correctamente.");
-          this.router.navigate(["/seguridad/registrar-cliente"]);
+          this.router.navigate(["/inicio"]);
         },
         (err) =>{
           alert("Error almacenando el registro");
@@ -112,6 +113,12 @@ export class RegistrarClienteComponent implements OnInit {
         alert("Error cargando el listado de registros");
       }
     );
+  }
+
+  ModCLiente(){
+    let direccion = this.fgv.cliente.value;
+    this.router.navigate([`/seguridad/editar-cliente/${String(direccion)}`])
+    
   }
 
 }

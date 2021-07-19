@@ -138,6 +138,18 @@
                         <i class="material-icons right">done</i>
                     </button>
                 </div>
+                <div class="input-field col s8">
+                    <input formControlName="cliente" id="cliente" type="number">
+                    <label for="cliente">Identificador del cliente a modificar</label>
+                </div>
+               <div class="input-field col s6">
+  <!--                  <a href="ModCLiente()"><input type="button"  class="btn btn-large btn-register waves-effect waves-light"
+                        value="volver"></a>-->
+                        <button (click)="ModCLiente()"
+                        class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Modificar
+                        <i class="material-icons right">done</i>
+                    </button>
+                </div>
             </div>
         </form>
     </div>

@@ -10,8 +10,20 @@ import { ResetearClaveComponent } from './resetear-clave/resetear-clave.componen
 import { RegistrarClienteComponent } from './registrar-cliente/registrar-cliente.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { ValidadorAdminGuard } from 'src/app/guardianes/validador-admin.guard';
+import { InfoFinancieraComponent } from './info-financiera/info-financiera.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 
 const routes: Routes = [
+  {
+    path: 'editar-cliente/:id',
+    component: EditarClienteComponent,
+    canActivate:[ValidadorSesionGuard]
+  },
+  {
+    path: 'info-financiera',
+    component: InfoFinancieraComponent,
+    canActivate:[ValidadorSesionGuard]
+  },
   {
     path: 'registrar-usuario',
     component: RegistrarUsuarioComponent,

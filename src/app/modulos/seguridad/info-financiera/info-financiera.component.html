@@ -4,31 +4,33 @@
         <form [formGroup]="fgValidador" class="col s12" id="reg-form">
             <div class="row">
                 <div class="input-field col s3">
-                    
+
                     <input id="TIngresos" formControlName="TIngresos" type="number">
                     <label for="TIngresos">Total de ingresos</label>
-                    
+
                 </div>
                 <div class="input-field col s6">
-                    
-                    <textarea id="datos_trabajo" formControlName="datos_trabajo" class="materialize-textarea"></textarea>
+
+                    <textarea id="datos_trabajo" formControlName="datos_trabajo"
+                        class="materialize-textarea"></textarea>
                     <label for="datos_trabajo">Datos laborales</label>
-                    
+
                 </div>
                 <div class="input-field col s3">
-                    
-                    <input id="TIngresos" formControlName="TIngresos" type="text">
-                    <label for="TIngresos">Total de ingresos</label>
-                    
+
+                    <input id="tiempo_trabajo_actual" formControlName="tiempo_trabajo_actual" type="text">
+                    <label for="tiempo_trabajo_actual">Tiempo de trabajo actual</label>
+
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <input formControlName="nombre_ref_fam" id="nombre_ref_fam" type="text">
                     <label for="nombre_ref_fam">Referencia Familiar</label>
-                    <div class="warning-validator" *ngIf="fgv.nombre_ref_fam.errors && (fgv.nombre_ref_fam.dirty || fgv.nombre_ref_fam.touched)">
+                    <div class="warning-validator"
+                        *ngIf="fgv.nombre_ref_fam.errors && (fgv.nombre_ref_fam.dirty || fgv.nombre_ref_fam.touched)">
                         <strong *ngIf="fgv.nombre_ref_fam.errors.required">
                             Este dato es necesario.
                         </strong>
@@ -56,8 +58,9 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <input formControlName="nombre_ref_personal" id="nombre_ref_personal" type="text">
-                    <label for="nombre_ref_personal">Referencia Familiar</label>
-                    <div class="warning-validator" *ngIf="fgv.nombre_ref_personal.errors && (fgv.nombre_ref_personal.dirty || fgv.nombre_ref_personal.touched)">
+                    <label for="nombre_ref_personal">Referencia personal</label>
+                    <div class="warning-validator"
+                        *ngIf="fgv.nombre_ref_personal.errors && (fgv.nombre_ref_personal.dirty || fgv.nombre_ref_personal.touched)">
                         <strong *ngIf="fgv.nombre_ref_personal.errors.required">
                             Este dato es necesario.
                         </strong>
@@ -68,7 +71,24 @@
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="clienteId" formControlName="clienteId" type="text">
+                    <input formControlName="tel_ref_personal" id="tel_ref_personal" type="text">
+                    <label for="tel_ref_personal">Telefono de referencia</label>
+                    <div class="warning-validator"
+                        *ngIf="fgv.tel_ref_personal.errors && (fgv.tel_ref_personal.dirty || fgv.tel_ref_personal.touched)">
+                        <strong *ngIf="fgv.tel_ref_personal.errors.required">
+                            Este dato es necesario.
+                        </strong>
+                        <strong *ngIf="fgv.tel_ref_personal.errors.minlength">
+                            Debe tener al menos 2 caracteres.
+                        </strong>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="clienteId" formControlName="clienteId" type="number">
                     <label for="clienteId">Cliente</label>
                     <div class="warning-validator"
                         *ngIf="fgv.clienteId.errors && (fgv.clienteId.dirty || fgv.clienteId.touched)">
