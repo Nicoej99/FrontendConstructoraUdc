@@ -24,12 +24,12 @@ const routes: Routes = [
   {
     path: 'editar-cliente/:id',
     component: EditarClienteComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   {
     path: 'info-financiera',
     component: InfoFinancieraComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   {
     path: 'registrar-usuario',
@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: 'registrar-cliente',
     component: RegistrarClienteComponent,
-    canActivate:[ValidadorSesionGuard, ValidadorAdminGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   {
     path: 'iniciar-sesion',
@@ -66,19 +66,19 @@ const routes: Routes = [
   {
     path: 'crear-solicitud',
     component: CrearSolicitudComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-solicitud/:id',
     component: EditarSolicitudComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-solicitud/:id',
     component: EliminarSolicitudComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'listar-solicitud',
     component: ListarSolicitudComponent,
-    canActivate:[ValidadorSesionGuard]
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },
 
 ];

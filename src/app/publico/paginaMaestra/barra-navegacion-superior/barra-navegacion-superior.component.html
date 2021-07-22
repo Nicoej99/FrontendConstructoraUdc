@@ -8,15 +8,15 @@
     <a id="logoss" routerLink="/" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-      <li *ngIf="isAdmin"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
-      <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
+      <li *ngIf="isVendedor"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
+      <li *ngIf="isVendedor"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
       <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
-      <li *ngIf="isAdmin"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloque">Bloque</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
+      <li *ngIf="isVendedor"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
+      <li *ngIf="isVendedor"><a routerLink="parametros/listar-bloque">Bloque</a></li>
+      <li *ngIf="isVendedor"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
+      <li *ngIf="isVendedor"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
+      <li *ngIf="isVendedor"><a routerLink="parametros/listar-pais">Pais</a></li>
+      <li *ngIf="isVendedor"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
@@ -27,14 +27,16 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-  <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
+  <li *ngIf="isVendedor"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
+  <li *ngIf="isVendedor"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
   <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/crear-solicitud">Solicitud</a></li>
+  <li *ngIf="isVendedor"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
   <li *ngIf="isVendedor"><a routerLink="parametros/listar-bloque">Bloque</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
+  <li *ngIf="isVendedor"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
+  <li *ngIf="isVendedor"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
+  <li *ngIf="isVendedor"><a routerLink="parametros/listar-pais">Pais</a></li>
+  <li *ngIf="isVendedor"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
 </ul>
