@@ -94,7 +94,7 @@ export class SeguridadService {
           return true;
           break;
         case "6068f354b4388d860e4e2a3b":
-          alert("Vendedor")
+          alert("Vend")
           modelo.isVendedor = true;
           return true;
           break;

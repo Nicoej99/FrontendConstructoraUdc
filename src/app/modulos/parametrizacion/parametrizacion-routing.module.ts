@@ -27,92 +27,92 @@ const routes: Routes = [
  {
     path: 'listar-pais',
     component: ListarPaisComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'crear-pais',
     component: CrearPaisComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-pais/:id',
     component: EditarPaisComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-pais/:id',
     component: EliminarPaisComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   
   {
     path: 'listar-ciudad',
     component: ListarCiudadComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'crear-ciudad',
     component: CrearCiudadComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-ciudad/:id',
     component: EditarCiudadComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-ciudad/:id',
     component: EliminarCiudadComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   
   {
     path: 'listar-proyecto',
     component: ListarProyectoComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'crear-proyecto',
     component: CrearProyectoComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-proyecto/:id',
     component: EditarProyectoComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-proyecto/:id',
     component: EliminarProyectoComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   
   
   {
     path: 'listar-bloque',
     component: ListarBloqueComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'crear-bloque',
     component: CrearBloqueComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-bloque/:id',
     component: EditarBloqueComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-bloque/:id',
     component: EliminarBloqueComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
 
   {
     path: 'listar-inmueble',
     component: ListarInmuebleComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'crear-inmueble',
     component: CrearInmuebleComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'editar-inmueble/:id',
     component: EditarInmuebleComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
     path: 'eliminar-inmueble/:id',
     component: EliminiarInmuebleComponent,
-    canActivate: [ValidadorSesionGuard]
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   
   
