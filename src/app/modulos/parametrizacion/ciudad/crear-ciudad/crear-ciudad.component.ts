@@ -6,6 +6,7 @@ import { PaisModelo } from 'src/app/modelos/pais.modelos';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { PaisService } from 'src/app/servicios/pais.service';
 
+declare var iniciarSelect: any;
 @Component({
   selector: 'app-crear-ciudad',
   templateUrl: './crear-ciudad.component.html',
@@ -37,7 +38,9 @@ export class CrearCiudadComponent implements OnInit {
   ngOnInit(): void {
     this.ConstruirFormulario();
     this.getAllPaises();
+    
   }
+
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
   }
@@ -65,7 +68,9 @@ export class CrearCiudadComponent implements OnInit {
     this.serviciopais.ListarRegistros().subscribe(
       data => {
         this.ListaPais = data;
-        //setTimeout(initSelect(), 500);
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
       },
       error => {
         console.error("Error loading paises");

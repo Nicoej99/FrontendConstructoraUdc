@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { FormsConfig } from 'src/app/config/forms-config';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { LoginModelo } from 'src/app/modelos/login.modelos';
 import { UsuarioModelo } from 'src/app/modelos/usuario.modelos';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 import { LoginService } from 'src/app/servicios/login.service';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -22,11 +24,13 @@ export class RegistrarUsuarioComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   documentMinLength = FormsConfig.DOCUMENT_MIN_LENGTH;
   nameMinLength = FormsConfig.NAME_MIN_LENGTH;
+  ListaCiudad: CiudadModelo[]= [];
 
 
   constructor(private fb: FormBuilder,
     private servicio: UsuarioService,
     private serviciologin: LoginService,
+    private servicioCiudades: CiudadService,
     private router: Router) {
 
 
@@ -47,6 +51,7 @@ export class RegistrarUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.ConstruirFormulario();
     iniciarSelect();
+    this.getAllCiudades();
   }
 
   get fgv() {
@@ -85,7 +90,7 @@ export class RegistrarUsuarioComponent implements OnInit {
           //crea usuario y contraseña usuario al login
           this.serviciologin.AlmacenarRegistro(modelLogin).subscribe(
             (datos) => {
-              console.log("usuario y contraseña generado correctamente.");
+              console.log("usuario y contraseña enviado al correo.");
 
             },
             (err) => {
@@ -101,6 +106,20 @@ export class RegistrarUsuarioComponent implements OnInit {
 
 
     }
+  }
+
+  getAllCiudades() {
+    this.servicioCiudades.ListarRegistros().subscribe(
+      data => {
+        this.ListaCiudad = data;
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
   }
 
 

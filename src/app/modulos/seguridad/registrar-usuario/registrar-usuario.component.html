@@ -79,8 +79,11 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">map</i>
-                    <input formControlName="city" id="city" type="number">
-                    <label for="city">Ciudad</label>
+                    <select formControlName="city">
+                        <option value="" disabled selected>Selecciona tu ciudad</option>
+                        <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.id}}'>{{ciudad.nombre}}
+                        </option>
+                    </select>
                     <div class="warning-validator" *ngIf="fgv.city.errors && (fgv.city.dirty || fgv.city.touched)">
                         <strong *ngIf="fgv.city.errors.required">
                             Este dato es necesario.
@@ -90,6 +93,9 @@
                         </strong>
                     </div>
                 </div>
+
+
+
                 <div class="input-field col s3">
                     <select formControlName="rol" type="number">
                         <option value="" disabled selected>Elige el rol adecuado</option>

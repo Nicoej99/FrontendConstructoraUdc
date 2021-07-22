@@ -7,7 +7,7 @@ export class ClienteModelo{
     apellido?: string;
     fechaNacimiento?: string;
     foto?: string;
-    numCelular?: number;
+    numCelular?: String;
     correoElectronico?: string;
     direccion?: string;
     ciudadId?: number;

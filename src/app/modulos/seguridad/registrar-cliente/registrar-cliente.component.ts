@@ -12,6 +12,8 @@ import { PaisModelo } from 'src/app/modelos/pais.modelos';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { element } from 'protractor';
 import { getHtmlTagDefinition } from '@angular/compiler';
+import { PaisService } from 'src/app/servicios/pais.service';
+import { CiudadService } from 'src/app/servicios/ciudad.service';
 
 declare var iniciarSelect: any;
 declare var agregarCiudades: any;
@@ -26,10 +28,11 @@ export class RegistrarClienteComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   documentMinLength = FormsConfig.DOCUMENT_MIN_LENGTH;
   nameMinLength = FormsConfig.NAME_MIN_LENGTH;
-  listaRegistros: CiudadModelo[] = [];
+  ListaCiudad: CiudadModelo[]= [];
   
   constructor(private fb: FormBuilder,
     private servicio: ClienteService,
+    private serviciopais: CiudadService,
     private router: Router ) {
 
 
@@ -45,7 +48,7 @@ export class RegistrarClienteComponent implements OnInit {
       address: ['', [Validators.required, Validators.minLength(5)]],
       city: ['', [Validators.required, Validators.minLength(3)]],
       birthdate: ['',[Validators.required]],
-      cliente: ['']
+      cliente: [''],
     });
    }
 
@@ -53,7 +56,7 @@ export class RegistrarClienteComponent implements OnInit {
     this.ConstruirFormulario();
     iniciarSelect();
     //this.obtenerCiudades();
-    
+    this.getAllPaises();
     
   }
 
@@ -63,8 +66,8 @@ export class RegistrarClienteComponent implements OnInit {
 
   ValidarIdentificacion() {
 
-    alert(this.fgValidador.invalid+"es aqui")
-    if (this.fgValidador.invalid) {
+    alert(this.fgValidador.invalid+" - es aqui")
+    if (!this.fgValidador.invalid) {
       alert("Formulario inválido, no entro")
     } else {
       let model = this.getClienteData();
@@ -85,7 +88,6 @@ export class RegistrarClienteComponent implements OnInit {
   getClienteData(): ClienteModelo {
     let model: ClienteModelo = new ClienteModelo();
     model.direccion = this.fgv.address.value;
-    model.ciudadId = this.fgv.city.value;
     model.documento = this.fgv.document.value;
     model.correoElectronico = this.fgv.email.value;
     model.apellido = this.fgv.lastname.value;
@@ -93,6 +95,7 @@ export class RegistrarClienteComponent implements OnInit {
     model.numCelular = this.fgv.phone.value;
     model.fechaNacimiento = this.fgv.birthdate.value;
     model.foto = "SOY UNA FOTO";
+    model.ciudadId = parseInt(this.fgv.city.value);
     alert("Cliente guardado con exito");
     
     return model;
@@ -102,23 +105,25 @@ export class RegistrarClienteComponent implements OnInit {
     return this.fgValidador.controls;
   }
 
-  obtenerCiudades(){
-    this.servicio.ListarCiudad().subscribe(
-      (datos) => {
-        this.listaRegistros = datos;
-        agregarCiudades(this.listaRegistros);
-        
-      },
-      (err) => {
-        alert("Error cargando el listado de registros");
-      }
-    );
-  }
-
   ModCLiente(){
     let direccion = this.fgv.cliente.value;
     this.router.navigate([`/seguridad/editar-cliente/${String(direccion)}`])
     
   }
+
+  getAllPaises() {
+    this.serviciopais.ListarRegistros().subscribe(
+      data => {
+        this.ListaCiudad = data;
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
+  }
+  
 
 }

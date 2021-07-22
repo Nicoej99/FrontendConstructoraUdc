@@ -3,26 +3,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var instancess = M.Sidenav.init(elemss, {});
 });
 
-function agregarCiudades(x) {
-  
-  console.log("-------------------------")
-  nombre = `<h3>hola</h3>`
-
-  console.log(document.getElementById("miSelect"))
-  for (var i = 0; i < x.length; i++) {
-    nombre = `<select id="" >
-                <option value="" disabled selected>Países</option>
-                <option value="0" >europa</option>
-                <option value="1" >alemania</option>
-              </select>
-              <label>Elige tu país</label>
-              <br>`
-    document.getElementById("miSelect").insertAdjacentHTML('beforeend', nombre)
-  }
-
-
-
+function iniciarSelect() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, {});
 }
+
+function iniciarDesplegable() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {});
+}
+
+
+
+
+
+
+
 
 function inyectarCodigo(nombre, apellido) {
   nombre = `<h3>${nombre} ${apellido}</h3>`
@@ -32,7 +28,6 @@ function inyectarCodigo(nombre, apellido) {
 
 
 function iniciarImagen() {
-  console.log("entrarrrrrrrrrrrrrrrrr");
   const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
     $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
 
@@ -55,15 +50,6 @@ function iniciarImagen() {
 }
 
 
-function iniciarSelect() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
-}
-
-function iniciarDesplegable() {
-  var elemsd = document.querySelectorAll('.dropdown-trigger');
-  var instancesd = M.Dropdown.init(elemsd, options);
-}
 
 function ObtenerRol() {
   var valor = document.getElementById("role").value;

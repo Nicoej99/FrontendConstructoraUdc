@@ -87,6 +87,31 @@ export class ClienteService {
   }
 
 
+  enviarNoti(modelo: ClienteModelo, estado: number): Observable<ClienteModelo> {
+    return this.http.post<ClienteModelo>(
+      `${this.url}/cliente/notificacionSolicitud`,     
+      {
+       
+        documento: modelo.documento,
+        nombre: modelo.nombre,
+        apellido: modelo.apellido,
+        fechaNacimiento: modelo.fechaNacimiento,
+        foto: modelo.foto,
+        numCelular: modelo.numCelular,
+        correoElectronico: modelo.correoElectronico,
+        direccion: modelo.direccion,
+        ciudadId: modelo.ciudadId,
+        estado:estado
+        
+      },
+      {
+        headers: new HttpHeaders({
+          "Authorization":`Bearer ${this.token}`
+        })
+      });
+  }
+
+
 
   CustomerRegistering(cliente: ClienteModelo): Observable<ClienteModelo> {
     return this.http.post<ClienteModelo>(`${this.http}${this.entity}`, cliente, {

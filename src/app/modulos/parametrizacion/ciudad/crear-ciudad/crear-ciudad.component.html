@@ -1,6 +1,7 @@
 <div class="row">
     <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardarRegistro()">
         <div class="row">
+            <h4 class="center-align">Crear Ciudades</h4>
             <div class="input-field col s12">
                 <input formControlName="codigo" id="codigo" type="text" class="validate">
                 <label for="codigo">Codigo</label>
@@ -10,8 +11,9 @@
                 <label for="nombre">Nombre</label>
             </div>
             <div class="input-field col s12">
-                <select class="browser-default" formControlName="paisid">
-                    <option *ngFor="let pais of ListaPais" type="number" value='{{pais.codigo}}'>{{pais.nombre}}
+                <select formControlName="paisid">
+                    <option value="" disabled selected>Selecciona tu pais</option>
+                    <option *ngFor="let pais of ListaPais" type="number" value='{{pais.id}}'>{{pais.nombre}}
                     </option>
                 </select>
             </div>

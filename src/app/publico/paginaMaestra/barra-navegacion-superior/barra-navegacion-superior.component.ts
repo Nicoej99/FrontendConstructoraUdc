@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
-declare var MenuDespl: any;
+declare var iniciarDesplegable: any;
 
 @Component({
   selector: 'app-barra-navegacion-superior',
@@ -20,19 +20,27 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
   suscripcion: Subscription = new Subscription();
 
   ngOnInit(): void {
-  //  MenuDespl();
+    this.abrirdesplegar();
     this.suscripcion = this.servicioSeguridad.ObtenerDatosSesion().subscribe(
       (datos) => {
         console.log(datos)
         this.isLoggedIn = datos.isLoggedIn;
         this.isVendedor = datos.isVendedor;
         this.isAdmin = datos.isAdmin;
-        
+
       },
       (error) => {
 
       }
     );
   }
+
+  abrirdesplegar() {
+    setTimeout(() => {
+      iniciarDesplegable()
+    }, 500);
+  }
+
+
 
 }

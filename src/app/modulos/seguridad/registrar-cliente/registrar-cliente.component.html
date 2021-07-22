@@ -19,7 +19,7 @@
                 </div>
                 <div class="input-field col s3">
                     <i class="material-icons prefix">phone</i>
-                    <input formControlName="phone" id="cellphone" type="number">
+                    <input formControlName="phone" id="cellphone" type="text">
                     <label for="cellphone">Celular</label>
                     <div class="warning-validator" *ngIf="fgv.phone.errors && (fgv.phone.dirty || fgv.phone.touched)">
                         <strong *ngIf="fgv.phone.errors.required">
@@ -79,14 +79,14 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">map</i>
-                    <input formControlName="city" id="city" type="number">
-                    <label for="city">Ciudad</label>
+                    <select formControlName="city">
+                        <option value="" disabled selected>Selecciona tu ciudad</option>
+                        <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.id}}'>{{ciudad.nombre}}
+                        </option>
+                    </select>
                     <div class="warning-validator" *ngIf="fgv.city.errors && (fgv.city.dirty || fgv.city.touched)">
                         <strong *ngIf="fgv.city.errors.required">
                             Este dato es necesario.
-                        </strong>
-                        <strong *ngIf="fgv.city.errors.minlength">
-                            Debe tener al menos 3 caracteres.
                         </strong>
                     </div>
                 </div>
@@ -115,20 +115,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <br>
-                <div id="miSelect" class="input-field col s3">
-                    <select>
-                        <option value="" disabled selected>Países</option>
-                        <option value="12">colombia</option>
-                        <option value="13">ecuador</option>
-                        <option value="14">brazil</option>
-                        <option value="15">peru</option>
-                    </select>
-                    <label>Elige tu país</label>
-                    <br>
                 </div>
             </div>
             <div class="row">

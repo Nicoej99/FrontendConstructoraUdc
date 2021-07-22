@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
+import { ImagenProyectoModelo } from '../modelos/imagen-proyecto.modelos';
 import { ProyectoModelo } from '../modelos/proyecto.modelos';
 import { SeguridadService } from './seguridad.service';
 
@@ -71,17 +72,13 @@ export class ProyectoService {
       });
   }
 
-
-  AlmacenarImagen(): Observable<ProyectoModelo> {
-    console.log("entrar en cargar imagenasjdfhsdkfhsdkfg")
-    return this.http.post<ProyectoModelo>(
+  CargarArchivo(formData: FormData): Observable<ImagenProyectoModelo> {
+    return this.http.post<ImagenProyectoModelo>(
       `${this.url}/CargarImagenProyecto`,
-      {
-       
-      },
+      formData,
       {
         headers: new HttpHeaders({
-          "Authorization":`Bearer ${this.token}`
+          "Authorization": `Bearer ${this.token}`
         })
       });
   }

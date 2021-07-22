@@ -86,17 +86,19 @@
 
             </div>
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s4">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="clienteId" formControlName="clienteId" type="number">
-                    <label for="clienteId">Cliente</label>
-                    <div class="warning-validator"
-                        *ngIf="fgv.clienteId.errors && (fgv.clienteId.dirty || fgv.clienteId.touched)">
+                    <select formControlName="clienteId">
+                        <option value="" disabled selected>Selecciona tu Cliente</option>
+                        <option *ngFor="let cliente of ListaCliente" type="number" value='{{cliente.id}}'>{{cliente.nombre}} {{cliente.apellido}}
+                        </option>
+                    </select>
+                    <div class="warning-validator" *ngIf="fgv.clienteId.errors && (fgv.clienteId.dirty || fgv.clienteId.touched)">
                         <strong *ngIf="fgv.clienteId.errors.required">
                             Este dato es necesario.
                         </strong>
                         <strong *ngIf="fgv.clienteId.errors.minlength">
-                            Debe tener al menos 2 caracteres.
+                            Debe tener al menos 3 caracteres.
                         </strong>
                     </div>
                 </div>

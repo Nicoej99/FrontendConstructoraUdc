@@ -1,10 +1,6 @@
-<ul id="dropdown1" class="dropdown-content">
-    <li class="divider"></li>
-    <li><a href="#!">Cambiar Constraseña</a></li>
-    <li ><a href="#!">Cerrar Sesion</a></li>
-  </ul>
 <nav>
   <div class="nav-wrapper">
+
     <a id="logoss" routerLink="/" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
@@ -12,29 +8,34 @@
       <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
       <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
       <li *ngIf="isAdmin"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloque">Bloque</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloque">Bloque</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
-      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
-      <!-- <li *ngIf="isLoggedIn"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Opciones de usuario<i class="material-icons right">arrow_drop_down</i></a></li>-->
-    
+      <li ><a class="dropdown-trigger"  data-target="dropdown1"><i
+            class="material-icons right">arrow_drop_down</i></a>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li  ><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
+              <li ><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+            </ul>
+      </li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
+  <li *ngIf="isAdmin"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
   <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
   <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="seguridad/crear-solicitud">Solicitud</a></li>
-  <li *ngIf="isVendedor"><a routerLink="parametros/listar-bloque">Bloque</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
+  <li *ngIf="isAdmin"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
-  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-bloque">Bloque</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyecto">Proyecto</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudad</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-pais">Pais</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cambiar-clave">Cambiar Contraseña</a></li>
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
 </ul>

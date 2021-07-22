@@ -1,6 +1,7 @@
 <div class="row">
     <form class="col s12"   [formGroup]="fgValidador" (ngSubmit)="GuardarRegistro()"  >
         <div class="row">
+            <h4 class="center-align">Crear Bloque</h4>
             <div class="input-field col s12" >
                 <input formControlName="codigo" id="codigo" type="text" class="validate">
                 <label for="codigo">Codigo</label>
@@ -14,8 +15,11 @@
                 <label for="descripcion">Descripcion</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="proyectoid" id="proyectoid" type="number" class="validate">
-                <label for="proyectoid">ProyectoId</label>
+                <select formControlName="proyectoid">
+                    <option value="" disabled selected>Selecciona tu proyecto</option>
+                    <option *ngFor="let proyecto of ListaProyectos" type="number" value='{{proyecto.id}}'>{{proyecto.nombre}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="row">

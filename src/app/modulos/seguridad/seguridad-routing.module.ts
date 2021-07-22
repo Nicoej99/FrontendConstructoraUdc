@@ -18,6 +18,8 @@ import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-so
 
 import { InfoFinancieraComponent } from './info-financiera/info-financiera.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
+import { AceptarSolicitudesComponent } from './solicitud/aceptar-solicitudes/aceptar-solicitudes.component';
+import { RechazarSolicitudComponent } from './solicitud/rechazar-solicitud/rechazar-solicitud.component';
 
 
 const routes: Routes = [
@@ -72,14 +74,23 @@ const routes: Routes = [
     component: EditarSolicitudComponent,
     canActivate:[ValidadorSesionGuard]
   },{
-    path: 'eliminar-solicitud/:id',
+    path: 'eliminar-solicitud/:id/:cid',
     component: EliminarSolicitudComponent,
     canActivate:[ValidadorSesionGuard]
   },{
     path: 'listar-solicitud',
     component: ListarSolicitudComponent,
     canActivate:[ValidadorSesionGuard]
+  },{
+    path: 'aceptar-solicitudes',
+    component: AceptarSolicitudesComponent,
+    canActivate:[ValidadorSesionGuard]
   },
+  {
+    path: 'rechazar-solicitud/:id/:cid',
+    component: RechazarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  }
 
 ];
 

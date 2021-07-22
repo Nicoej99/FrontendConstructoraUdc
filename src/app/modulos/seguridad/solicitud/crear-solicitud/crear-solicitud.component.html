@@ -2,18 +2,24 @@
 <div class="row">
     <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="GuardarRegistro()">
         <div class="row">
-
+            <h4 class="center-align">Crear Solicitud</h4>
             <div class="input-field col s5">
                 <label class="active" for="fecha">Fecha solicitud:</label>
                 <input formControlName="fecha" type="date" id="fecha" name="nacimiento">
             </div>
             <div class="input-field col s12">
-                <input formControlName="inmuebleid" id="inmuebleid" type="number" class="validate">
-                <label for="inmuebleid">imuebleId</label>
+                <select formControlName="inmuebleid">
+                    <option value="" disabled selected>Selecciona tu inmueble</option>
+                    <option *ngFor="let inmueble of ListaInmuebles" type="number" value='{{inmueble.id}}'>{{inmueble.identificador}}
+                    </option>
+                </select>
             </div>
             <div class="input-field col s12">
-                <input formControlName="clienteid" id="clienteid" type="number" class="validate">
-                <label for="clienteid">ClienteId</label>
+                <select formControlName="clienteid">
+                    <option value="" disabled selected>Selecciona tu cliente</option>
+                    <option *ngFor="let cliente of ListaClientes" type="number" value='{{cliente.id}}'>{{cliente.nombre}} {{cliente.apellido}} 
+                    </option>
+                </select>
             </div>
             <div class="input-field col s12">
                 <input formControlName="oferta" id="oferta" type="number" class="validate">

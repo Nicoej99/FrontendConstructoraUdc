@@ -18,6 +18,8 @@ import { EditarSolicitudComponent } from './solicitud/editar-solicitud/editar-so
 import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-solicitud.component';
 import { EliminarSolicitudComponent } from './solicitud/eliminar-solicitud/eliminar-solicitud.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AceptarSolicitudesComponent } from './solicitud/aceptar-solicitudes/aceptar-solicitudes.component';
+import { RechazarSolicitudComponent } from './solicitud/rechazar-solicitud/rechazar-solicitud.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CrearSolicitudComponent,
     EditarSolicitudComponent,
     ListarSolicitudComponent,
-    EliminarSolicitudComponent
+    EliminarSolicitudComponent,
+    AceptarSolicitudesComponent,
+    RechazarSolicitudComponent
   ],
   imports: [
     CommonModule,

@@ -27,8 +27,6 @@ export class LoginService {
   }
 
   AlmacenarRegistro(modelo: LoginModelo): Observable<LoginModelo> {
-    console.log("login")
-    console.log(modelo)
     return this.http.post<LoginModelo>(
       `${this.url}/logins`,
       {

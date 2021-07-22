@@ -1,12 +1,12 @@
 <form>
-    <h3>aceptar Solicitud</h3>
-    <p>Está seguro de querer aceptar la solicitud del inmueble con ID:</p>
+    <h3>rechazar solicitud de Registros</h3>
+    <p>Está seguro de querer rechazar la solicitud registrados como:</p>
     <ul>
         <li *ngFor="let d of listaDatos">
             {{d}}
         </li>
     </ul>
-    <button class="btn red waves-effect waves-light" type="button" (click)="aceptarRegistro()" name="action">Confirmar
+    <button class="btn red waves-effect waves-light" type="button" (click)="rechazarRegistro()" name="action">Confirmar
         <i class="material-icons right">delete</i>
     </button>
     &nbsp;&nbsp;

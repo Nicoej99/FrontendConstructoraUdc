@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
+import { ClienteModelo } from 'src/app/modelos/cliente.modelos';
 import { InfoFinancieraModelo } from 'src/app/modelos/info-financiera';
 import { UsuarioModelo } from 'src/app/modelos/usuario.modelos';
+import { ClienteService } from 'src/app/servicios/cliente.service';
 import { InfoFinancieraService } from 'src/app/servicios/info-financiera.service';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 
+declare var iniciarSelect: any;
 @Component({
   selector: 'app-info-financiera',
   templateUrl: './info-financiera.component.html',
@@ -15,9 +18,11 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 export class InfoFinancieraComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  ListaCliente: ClienteModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: InfoFinancieraService,
+    private servicioCliente: ClienteService,
     private router: Router) {
 
 
@@ -37,7 +42,9 @@ export class InfoFinancieraComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    iniciarSelect();
     this.ConstruirFormulario();
+    this.getAllClientes();
   }
 
   get ObtenerFgvalidador() {
@@ -74,7 +81,7 @@ export class InfoFinancieraComponent implements OnInit {
     model.tel_ref_fam = this.fgv.tel_ref_fam.value;
     model.nombre_ref_personal = this.fgv.nombre_ref_personal.value;
     model.tel_ref_personal = this.fgv.tel_ref_personal.value;
-    model.clienteId = this.fgv.clienteId.value;
+    model.clienteId = parseInt(this.fgv.clienteId.value);
     alert("Info Financiera guardado con exito");
 
     return model;
@@ -82,6 +89,20 @@ export class InfoFinancieraComponent implements OnInit {
 
   get fgv() {
     return this.fgValidador.controls;
+  }
+
+  getAllClientes() {
+    this.servicioCliente.ListarRegistros().subscribe(
+      data => {
+        this.ListaCliente = data;
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
   }
 
 }

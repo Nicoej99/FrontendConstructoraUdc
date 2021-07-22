@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CambiarContraseñaModelo } from 'src/app/modelos/cambiarcontraseña.modelos';
 import { CambiarclaveService } from 'src/app/servicios/cambiarclave.service';
 
+
+declare var iniciarDesplegable:any;
 @Component({
   selector: 'app-cambiar-clave',
   templateUrl: './cambiar-clave.component.html',
@@ -28,6 +30,7 @@ export class CambiarClaveComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.abrirdesplegar()
     this.ConstruirFormulario();
   }
 
@@ -41,13 +44,19 @@ export class CambiarClaveComponent implements OnInit {
     modelo.newPassword = this.ObtenerFgvalidador.newPassword.value;
     this.servicio.CambiarClave(modelo).subscribe(
       (datos) =>{
-        alert("Contraseña cambiada correctamente.");
+        alert("Contraseña cambiada correctamente. enviado por SMS");
         this.router.navigate(["/inicio"]);
       },
       (err) =>{
         alert("Contraseña actual no es valida");
       }
     );
+  }
+
+  abrirdesplegar() {
+    setTimeout(() => {
+      iniciarDesplegable()
+    }, 500);
   }
 
 }
