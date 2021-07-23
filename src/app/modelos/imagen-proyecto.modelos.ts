@@ -1,3 +1,3 @@
 export class ImagenProyectoModelo{
-    filename?:String = "";
+    filename: String = "";
 }

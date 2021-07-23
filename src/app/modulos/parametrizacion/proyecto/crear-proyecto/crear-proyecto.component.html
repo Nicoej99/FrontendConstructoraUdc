@@ -10,6 +10,7 @@
                 <input formControlName="nombre" id="nombre" type="text" class="validate">
                 <label for="nombre">Nombre</label>
             </div>
+
             <div class="input-field col s12">
                 <input formControlName="descripcion" id="descripcion" type="text" class="validate">
                 <label for="descripcion">descripcion</label>
@@ -33,7 +34,12 @@
                     </div>
                 </div>
                 <div class="col s3">
-                    <input type="button" class="btn" value="Cargar Imagen" (click) = "CargarImagenAlServidor()">
+                    <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenAlServidor()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <strong formControlName="nomimagen">{{nombreImagenTemp}}</strong>
                 </div>
             </div>
         </div>

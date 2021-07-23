@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function iniciarSelect() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {});
+  var elemsciu = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elemsciu, {});
 }
 
 function iniciarDesplegable() {
-  var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {});
+  var elemsnav = document.querySelectorAll('.dropdown-trigger');
+    var instancesv = M.Dropdown.init(elemsnav, {});
 }
 
 
@@ -44,6 +44,9 @@ function iniciarImagen() {
     console.log(primerArchivo.path);
     // Lo convertimos a un objeto de tipo objectURL
     const objectURL = URL.createObjectURL(primerArchivo);
+    console.log("-----------------------");
+    console.log(objectURL)
+    console.log("-----------------------");
     // Y a la fuente de la imagen le ponemos el objectURL
     $imagenPrevisualizacion.src = objectURL;
   });

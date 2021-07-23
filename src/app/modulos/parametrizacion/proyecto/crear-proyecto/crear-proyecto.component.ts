@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelos';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { ImagenesService } from 'src/app/servicios/imagenes.service';
 import { ProyectoService } from 'src/app/servicios/proyecto.service';
 
 declare var iniciarImagen: any;
@@ -22,6 +23,7 @@ export class CrearProyectoComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private servicio: ProyectoService,
     private serviciociudad: CiudadService,
+    private servicioimagen: ImagenesService,
     private router: Router ) {
 
 
@@ -41,7 +43,6 @@ export class CrearProyectoComponent implements OnInit {
 
   ngOnInit(): void {
     this.ConstruirFormulario();
-    iniciarImagen();
     this.getAllCiudades();
   }
   get ObtenerFgValidador(){
@@ -51,9 +52,9 @@ export class CrearProyectoComponent implements OnInit {
   GuardarRegistro() {
     
     let modelo: ProyectoModelo = new ProyectoModelo();
-    modelo.nombre = this.ObtenerFgValidador.nombre.value;;
+    modelo.nombre = this.ObtenerFgValidador.nombre.value;
     modelo.codigo = this.ObtenerFgValidador.codigo.value;
-    modelo.imagen = this.ObtenerFgValidador.imagen.value;
+    modelo.imagen =  this.ObtenerFgValidador.nomimagen.value;
     modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
     modelo.ciudadId = parseInt( this.ObtenerFgValidador.ciudadid.value);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
@@ -93,8 +94,9 @@ export class CrearProyectoComponent implements OnInit {
   CargarImagenAlServidor(){
     let formData = new FormData();
     formData.append('file', this.fgValidador.controls.imagen.value);
-    this.servicio.CargarArchivo(formData).subscribe(
+    this.servicioimagen.CargarArchivo(formData).subscribe(
       (datos) =>{
+        this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nomimagen.setValue(datos.filename);
       },
       (error) => {
