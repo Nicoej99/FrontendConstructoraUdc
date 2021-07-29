@@ -6,6 +6,7 @@
     <ul class="right hide-on-med-and-down">
       <li *ngIf="isVendedor"><a routerLink="seguridad/info-financiera">Información Financiera</a></li>
       <li *ngIf="isVendedor"><a routerLink="seguridad/registrar-cliente">Registrar Cliente</a></li>
+      <li *ngIf="isAdmin"><a routerLink="seguridad/registrar-usuario">Registrar Usuario</a></li>
       <li *ngIf="isVendedor"><a routerLink="seguridad/listar-solicitud">Solicitud</a></li>
       <li *ngIf="isVendedor"><a routerLink="parametros/listar-inmueble">Inmueble</a></li>
       <li *ngIf="isVendedor"><a routerLink="parametros/listar-bloque">Bloque</a></li>
