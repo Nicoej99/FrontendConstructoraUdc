@@ -1,31 +1,45 @@
 <div class="row">
     <form class="col s12" [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()">
         <div class="row">
+            <h4 class="center-align">Crear Proyecto</h4>
             <div class="input-field col s12">
                 <input formControlName="codigo" id="codigo" type="text" class="validate">
                 <label class="active" for="codigo">Codigo</label>
             </div>
             <div class="input-field col s12">
                 <input formControlName="nombre" id="nombre" type="text" class="validate">
-                <label class="active" for="nombre">Nombre</label>
-            </div>
-            <div class="input-field col s12">
-
-                <input formControlName="imagen" type="file" id="seleccionArchivos" accept="image/*">
-                <img id="imagenPrevisualizacion">
-
-
-                
-                
+                <label class="active"for="nombre">Nombre</label>
             </div>
             <div class="input-field col s12">
                 <input formControlName="descripcion" id="descripcion" type="text" class="validate">
-                <label class="active" for="descripcion">descripcion</label>
+                <label class="active"for="descripcion">descripcion</label>
             </div>
-            
+
             <div class="input-field col s12">
-                <input formControlName="ciudadid" id="ciudadid" type="number" class="validate">
-                <label class="active" for="ciudadid">ciudadId</label>
+                <select formControlName="ciudadid">
+                    <option value="" disabled selected>Selecciona tu ciudad</option>
+                    <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.id}}'>{{ciudad.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="file-field input-field col s9">
+                    <div class="btn">
+                        <span>Seleleccionar Imagen</span>
+                        <input formControlName="imagen" (change)="SelectFile($event)" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="col s3">
+                    <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenAlServidor()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <strong formControlName="nomimagen">{{nombreImagenTemp}}</strong>
+                </div>
             </div>
         </div>
         <div class="row">

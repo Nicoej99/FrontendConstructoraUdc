@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteModelo } from 'src/app/modelos/cliente.modelos';
+import { InmuebleModelo } from 'src/app/modelos/inmueble.modelos';
 import { SolicitudModelo } from 'src/app/modelos/solicitud.modelos';
+import { ClienteService } from 'src/app/servicios/cliente.service';
+import { InmuebleService } from 'src/app/servicios/inmueble.service';
 import { SolicitudService } from 'src/app/servicios/solicitud.service';
 
+declare var iniciarSelect:any;
 @Component({
   selector: 'app-editar-solicitud',
   templateUrl: './editar-solicitud.component.html',
@@ -13,9 +18,13 @@ export class EditarSolicitudComponent implements OnInit {
 
    
   fgValidador: FormGroup = new FormGroup({});
+  ListaInmuebles: InmuebleModelo[]= [];
+  ListaClientes: ClienteModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: SolicitudService,
+    private servicioInmueble: InmuebleService,
+    private servicioCliente: ClienteService,
     private router: Router,
     private route: ActivatedRoute ) {
 
@@ -25,7 +34,7 @@ export class EditarSolicitudComponent implements OnInit {
    ConstruirFormulario(){
      this.fgValidador = this.fb.group({
       fecha: ['', [Validators.required]], 
-      inmuebleid: ['', [Validators.required]], 
+      inmuebleid: ['', [Validators.required]],
       clienteid: ['', [Validators.required]], 
       oferta: ['', [Validators.required]], 
       estadoid: ['', [Validators.required]], 
@@ -38,6 +47,8 @@ export class EditarSolicitudComponent implements OnInit {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
     this.ObtenerRegistroPorId(id);
+    this.getAllInmuebles();
+    this.getAllClientes();
   }
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
@@ -45,9 +56,9 @@ export class EditarSolicitudComponent implements OnInit {
 
   ModificarRegistro() {
     let modelo: SolicitudModelo = new SolicitudModelo();
-    modelo.fecha_solicitud = this.ObtenerFgValidador.fecha.value;;
-    modelo.inmuebleId = this.ObtenerFgValidador.inmuebleid.value;
-    modelo.clienteId = this.ObtenerFgValidador.clienteid.value;
+    modelo.fecha_solicitud = this.ObtenerFgValidador.fecha.value;
+    modelo.inmuebleId = parseInt (this.ObtenerFgValidador.inmuebleid.value);
+    modelo.clienteId = parseInt (this.ObtenerFgValidador.clienteid.value);
     modelo.Oferta_economica = this.ObtenerFgValidador.oferta.value;
     modelo.estadoId = 1;
     modelo.id = this.ObtenerFgValidador.id.value;;
@@ -78,5 +89,32 @@ export class EditarSolicitudComponent implements OnInit {
     );
   }
 
+  getAllInmuebles() {
+    this.servicioInmueble.ListarRegistros().subscribe(
+      data => {
+        this.ListaInmuebles = data;
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
+  }
+
+  getAllClientes() {
+    this.servicioCliente.ListarRegistros().subscribe(
+      data => {
+        this.ListaClientes = data;
+        setTimeout(() =>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
+  }
 
 }

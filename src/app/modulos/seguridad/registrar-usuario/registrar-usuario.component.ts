@@ -43,7 +43,7 @@ export class RegistrarUsuarioComponent implements OnInit {
       lastname: ['', [Validators.required, Validators.minLength(this.nameMinLength)]],
       phone: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(14)]],
       email: ['', [Validators.required, Validators.email]],
-      city: ['', [Validators.required, Validators.minLength(3)]],
+      city: ['', [Validators.required]],
       rol: ['', [Validators.required]],
     });
   }
@@ -67,7 +67,7 @@ export class RegistrarUsuarioComponent implements OnInit {
     model.apellido = this.fgv.lastname.value;
     model.telefono = this.fgv.phone.value;
     model.correo = this.fgv.email.value;
-    model.ciudadId = this.fgv.city.value;
+    model.ciudadId = parseInt (this.fgv.city.value);
     model.role = this.fgv.rol.value
 
     //modelo login
@@ -85,22 +85,22 @@ export class RegistrarUsuarioComponent implements OnInit {
       // almacena registro usuario
       this.servicio.AlmacenarRegistro(model).subscribe(
         (datos) => {
-          console.log("Registro almacenado en la base de datos correctamente.");
+          alert("Registro almacenado en la base de datos correctamente.");
 
           //crea usuario y contraseña usuario al login
           this.serviciologin.AlmacenarRegistro(modelLogin).subscribe(
             (datos) => {
-              console.log("usuario y contraseña enviado al correo.");
+              alert("usuario y contraseña enviado al correo.");
 
             },
             (err) => {
-              console.log("Error al generar usuario y contraseña");
+              alert("Error al generar usuario y contraseña");
             }
           );
           //----------
         },
         (err) => {
-          console.log("Error al almacenando el registro en la base de datos");
+          alert("Error al almacenando el registro en la base de datos");
         }
       );
 

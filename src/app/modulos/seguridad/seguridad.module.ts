@@ -16,10 +16,13 @@ import { InfoFinancieraComponent } from './info-financiera/info-financiera.compo
 import { CrearSolicitudComponent } from './solicitud/crear-solicitud/crear-solicitud.component';
 import { EditarSolicitudComponent } from './solicitud/editar-solicitud/editar-solicitud.component';
 import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-solicitud.component';
-import { EliminarSolicitudComponent } from './solicitud/eliminar-solicitud/eliminar-solicitud.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AceptarSolicitudesComponent } from './solicitud/aceptar-solicitudes/aceptar-solicitudes.component';
 import { RechazarSolicitudComponent } from './solicitud/rechazar-solicitud/rechazar-solicitud.component';
+import { InformeVentasComponent } from './solicitud/informe-ventas/informe-ventas.component';
+import { AceptarSolicitudComponent } from './solicitud/aceptar-solicitud/aceptar-solicitud.component';
+import { ListarAceptarSolicitudComponent } from './solicitud/listar-aceptar-solicitud/listar-aceptar-solicitud.component';
+
+
 
 
 @NgModule({
@@ -36,16 +39,19 @@ import { RechazarSolicitudComponent } from './solicitud/rechazar-solicitud/recha
     CrearSolicitudComponent,
     EditarSolicitudComponent,
     ListarSolicitudComponent,
-    EliminarSolicitudComponent,
-    AceptarSolicitudesComponent,
-    RechazarSolicitudComponent
+    RechazarSolicitudComponent,
+    InformeVentasComponent,
+    AceptarSolicitudComponent,
+    ListarAceptarSolicitudComponent
   ],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+  
   ]
 })
 export class SeguridadModule { }

@@ -22,7 +22,7 @@ export class PaisService {
     return this.http.get<PaisModelo[]>(`${this.url}/pais`);
   }
 
-  BuscarRegistro(id : number): Observable<PaisModelo>{
+  BuscarRegistro(id? : number): Observable<PaisModelo>{
     return this.http.get<PaisModelo>(`${this.url}/pais/${id}`);
   }
 

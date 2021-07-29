@@ -117,6 +117,28 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="file-field input-field col s9">
+                    <div class="btn">
+                        <span>Seleleccionar Imagen</span>
+                        <input formControlName="imagen" (change)="SelectFile($event)" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <div class="col s3">
+                    <input type="button" class="btn" value="Cargar Imagen" (click)="CargarImagenAlServidor()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <strong formControlName="nomimagen">{{nombreImagenTemp}}</strong>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="input-field col s6">
                     <button (click)="ValidarIdentificacion()"
@@ -128,11 +150,11 @@
                     <input formControlName="cliente" id="cliente" type="number">
                     <label for="cliente">Identificador del cliente a modificar</label>
                 </div>
-               <div class="input-field col s6">
-  <!--                  <a href="ModCLiente()"><input type="button"  class="btn btn-large btn-register waves-effect waves-light"
+                <div class="input-field col s6">
+                    <!--                  <a href="ModCLiente()"><input type="button"  class="btn btn-large btn-register waves-effect waves-light"
                         value="volver"></a>-->
-                        <button (click)="ModCLiente()"
-                        class="btn btn-large btn-register waves-effect waves-light" type="button" name="action">Modificar
+                    <button (click)="ModCLiente()" class="btn btn-large btn-register waves-effect waves-light"
+                        type="button" name="action">Modificar
                         <i class="material-icons right">done</i>
                     </button>
                 </div>

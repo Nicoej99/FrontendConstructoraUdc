@@ -20,7 +20,6 @@ export class ListarProyectoComponent implements OnInit {
 
   ngOnInit(): void {
     this.ObtenerListadoProyecto();
-    this.descargarImagen();
   }
 
   ObtenerListadoProyecto() {
@@ -36,22 +35,6 @@ export class ListarProyectoComponent implements OnInit {
 
   CambioPagina(p: number){
     this.pagina = p;
-  }
-
-
-  descargarImagen(){
-    
-
-    this.servicioimagen.descargarArchivo(2,"1627004198585-aaaa.png").subscribe(
-      (datos) =>{
-        this.imagen = datos[0];
-        return this.imagen;
-      },
-      (error) => {
-        console.log(error)
-        alert("Se ha producido un error al cargar el archivo.");
-      }
-    );
   }
 
 

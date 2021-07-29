@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { url } from 'node:inspector';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelos';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
@@ -20,6 +21,7 @@ export class CrearProyectoComponent implements OnInit {
   ListaCiudad: CiudadModelo[]= [];
   nombreImagenTemp: String = "Sin imagen";
 
+
   constructor(private fb: FormBuilder,
     private servicio: ProyectoService,
     private serviciociudad: CiudadService,
@@ -37,6 +39,7 @@ export class CrearProyectoComponent implements OnInit {
       ciudadid: ['', [Validators.required]], 
       imagen: ['', []], 
       nomimagen: ['', [Validators.required]], 
+      imagenPrevisualizacion: ['', [Validators.required]], 
     
      });
    }
@@ -57,6 +60,7 @@ export class CrearProyectoComponent implements OnInit {
     modelo.imagen =  this.ObtenerFgValidador.nomimagen.value;
     modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
     modelo.ciudadId = parseInt( this.ObtenerFgValidador.ciudadid.value);
+    
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");
@@ -96,6 +100,7 @@ export class CrearProyectoComponent implements OnInit {
     formData.append('file', this.fgValidador.controls.imagen.value);
     this.servicioimagen.CargarArchivo(formData).subscribe(
       (datos) =>{
+        
         this.nombreImagenTemp = datos.filename;
         this.fgValidador.controls.nomimagen.setValue(datos.filename);
       },

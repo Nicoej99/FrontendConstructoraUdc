@@ -24,6 +24,8 @@ import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmue
 import { EliminiarInmuebleComponent } from './inmueble/eliminiar-inmueble/eliminiar-inmueble.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InformacionProyectoComponent } from './proyecto/informacion-proyecto/informacion-proyecto.component';
+import { InformeCiudadComponent } from './ciudad/informe-ciudad/informe-ciudad.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CrearInmuebleComponent,
     EditarInmuebleComponent,
     ListarInmuebleComponent,
-    EliminiarInmuebleComponent
+    EliminiarInmuebleComponent,
+    InformacionProyectoComponent,
+    InformeCiudadComponent
   ],
   imports: [
     CommonModule,

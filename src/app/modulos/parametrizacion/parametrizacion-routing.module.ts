@@ -9,6 +9,7 @@ import { ListarBloqueComponent } from './bloque/listar-bloque/listar-bloque.comp
 import { CrearCiudadComponent } from './ciudad/crear-ciudad/crear-ciudad.component';
 import { EditarCiudadComponent } from './ciudad/editar-ciudad/editar-ciudad.component';
 import { EliminarCiudadComponent } from './ciudad/eliminar-ciudad/eliminar-ciudad.component';
+import { InformeCiudadComponent } from './ciudad/informe-ciudad/informe-ciudad.component';
 import { ListarCiudadComponent } from './ciudad/listar-ciudad/listar-ciudad.component';
 import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble.component';
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
@@ -21,6 +22,7 @@ import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
 import { CrearProyectoComponent } from './proyecto/crear-proyecto/crear-proyecto.component';
 import { EditarProyectoComponent } from './proyecto/editar-proyecto/editar-proyecto.component';
 import { EliminarProyectoComponent } from './proyecto/eliminar-proyecto/eliminar-proyecto.component';
+import { InformacionProyectoComponent } from './proyecto/informacion-proyecto/informacion-proyecto.component';
 import { ListarProyectoComponent } from './proyecto/listar-proyecto/listar-proyecto.component';
 
 const routes: Routes = [
@@ -58,6 +60,10 @@ const routes: Routes = [
     path: 'eliminar-ciudad/:id',
     component: EliminarCiudadComponent,
     canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
+  },{
+    path: 'informe-ciudad',
+    component: InformeCiudadComponent,
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   
   {
@@ -75,6 +81,10 @@ const routes: Routes = [
   },{
     path: 'eliminar-proyecto/:id',
     component: EliminarProyectoComponent,
+    canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
+  },{
+    path: 'informacion-proyecto/:id',
+    component: InformacionProyectoComponent,
     canActivate: [ValidadorSesionGuard, ValidadorVendedorGuard]
   },
   

@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~11.2.10",
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
+    "chart.js": "^3.4.1",
+    "chartjs-plugin-datalabels": "^2.0.0",
     "crypto-js": "^4.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "ng-recaptcha": "^8.0.0",

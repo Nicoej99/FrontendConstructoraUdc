@@ -15,8 +15,11 @@
                 <label for="valor">Valor</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="bloqueid" id="bloqueid" type="number" class="validate">
-                <label for="bloqueid">BloqueId</label>
+                <select formControlName="bloqueid">
+                    <option value="" disabled selected>Selecciona tu bloque</option>
+                    <option *ngFor="let bloque of ListaBloque" type="number" value='{{bloque.id}}'>{{bloque.nombre}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="row">

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BloqueModelo } from 'src/app/modelos/bloque.modelos';
+import { ProyectoModelo } from 'src/app/modelos/proyecto.modelos';
 import { BloqueService } from 'src/app/servicios/bloque.service';
+import { ProyectoService } from 'src/app/servicios/proyecto.service';
+
+declare var iniciarSelect: any;
 
 @Component({
   selector: 'app-editar-bloque',
@@ -12,9 +16,11 @@ import { BloqueService } from 'src/app/servicios/bloque.service';
 export class EditarBloqueComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  ListaProyecto: ProyectoModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: BloqueService,
+    private servicioProyecto : ProyectoService,
     private router: Router,
     private route: ActivatedRoute ) {
 
@@ -36,6 +42,7 @@ export class EditarBloqueComponent implements OnInit {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
     this.ObtenerRegistroPorId(id);
+    this.getAllProyectos();
   }
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
@@ -47,7 +54,7 @@ export class EditarBloqueComponent implements OnInit {
     modelo.nombre = this.ObtenerFgValidador.nombre.value;
     modelo.codigo = this.ObtenerFgValidador.codigo.value;
     modelo.descripcion = this.ObtenerFgValidador.descripcion.value;
-    modelo.proyectoId = this.ObtenerFgValidador.proyectoid.value;
+    modelo.proyectoId =parseInt (this.ObtenerFgValidador.proyectoid.value);
     modelo.id = this.ObtenerFgValidador.id.value;
     this.servicio.ModificarRegistro(modelo).subscribe(
       (datos) =>{
@@ -75,4 +82,17 @@ export class EditarBloqueComponent implements OnInit {
     );
   }
 
+  getAllProyectos() {
+    this.servicioProyecto.ListarRegistros().subscribe(
+      data => {
+        this.ListaProyecto = data;
+        setTimeout(()=>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading Proyectos");
+      }
+    );
+  }
 }

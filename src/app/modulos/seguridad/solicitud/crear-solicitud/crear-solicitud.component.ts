@@ -81,11 +81,17 @@ export class CrearSolicitudComponent implements OnInit {
           // mirar en un for si las solicitudes estan en estudio
           let bandera: boolean = false;
           for (let i = 0; i < this.listaRegistros.length; i++) {
-            if (this.listaRegistros[i].estadoId == 1) {
+            if (this.listaRegistros[i].estadoId == 1 ) {
               alert("no se admiten mas solicitudes por el momento")
               bandera = true;
               break;
             }
+            if (this.listaRegistros[i].estadoId == 2 ) {
+              alert("este inmueble ya fue comprado")
+              bandera = true;
+              break;
+            }
+
           }
           if (bandera == false) {
             this.servicio.AlmacenarRegistro(modelo).subscribe(

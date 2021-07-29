@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SolicitudModelo } from 'src/app/modelos/solicitud.modelos';
 import { ClienteService } from 'src/app/servicios/cliente.service';
 import { SolicitudService } from 'src/app/servicios/solicitud.service';
 
-
 @Component({
-  selector: 'app-eliminar-solicitud',
-  templateUrl: './eliminar-solicitud.component.html',
-  styleUrls: ['./eliminar-solicitud.component.css']
+  selector: 'app-aceptar-solicitud',
+  templateUrl: './aceptar-solicitud.component.html',
+  styleUrls: ['./aceptar-solicitud.component.css']
 })
-export class EliminarSolicitudComponent implements OnInit {
+export class AceptarSolicitudComponent implements OnInit {
 
   listaDatos: String[] = [];
   id: number = 0;
@@ -35,7 +33,7 @@ export class EliminarSolicitudComponent implements OnInit {
 
 
 
-  ObtenerRegistroPorId(id: number , idCliente : number) {
+  ObtenerRegistroPorId(id: number, idCliente: number) {
     this.servicio.BuscarRegistro(id).subscribe(
       (datos) => {
         if (datos.id && datos.Oferta_economica) {
@@ -65,11 +63,11 @@ export class EliminarSolicitudComponent implements OnInit {
     //buscar solicitud
     this.servicio.BuscarRegistro(id).subscribe(
       (datosSolicitud) => {
-        let estado =datosSolicitud.estadoId = 2;
+        let estado = datosSolicitud.estadoId = 2;
         this.servicio.ModificarRegistro(datosSolicitud).subscribe(
           (datos) => {
             alert("Solicitud  aceptada correctamente.");
-            
+
             let idCliente = this.idCliente;
             //busca cliente
             this.serviciocliente.BuscarRegistro(idCliente).subscribe(
@@ -77,9 +75,9 @@ export class EliminarSolicitudComponent implements OnInit {
                 alert("cliente encontrado")
                 this.serviciocliente.enviarNoti(datosCliente, estado).subscribe(
                   (datos) => {
-        
+
                     alert("Cliente notificado")
-                    this.router.navigate(["/seguridad/aceptar-solicitudes"]);
+                    this.router.navigate(["/seguridad/listar-aceptar-solicitudes"]);
                   },
                   (err) => {
                     alert("Error norificando al cliente");
@@ -103,8 +101,8 @@ export class EliminarSolicitudComponent implements OnInit {
         );
 
 
-       
-        this.router.navigate(["/seguridad/aceptar-solicitudes"]);
+
+        this.router.navigate(["/seguridad/listar-aceptar-solicitudes"]);
       },
       (err) => {
         alert("Error buscando solicitud el registro");

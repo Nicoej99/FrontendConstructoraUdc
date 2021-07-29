@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatosGenerales } from 'src/app/config/datos.generales';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { ProyectoService } from 'src/app/servicios/proyecto.service';
 
 @Component({
   selector: 'app-listar-ciudad',
@@ -13,6 +14,8 @@ export class ListarCiudadComponent implements OnInit {
   pagina : number=1;
   regPorPagina:  number = DatosGenerales.numRegistrosPorPagina;
   listaRegistros: CiudadModelo[] = [];
+  listaInfoCiudad:any[]=[];
+  datoInmueble:any[]= [];
   constructor(private servicio: CiudadService) { }
 
   ngOnInit(): void {
@@ -21,8 +24,8 @@ export class ListarCiudadComponent implements OnInit {
 
   ObtenerListadoCiudad() {
     this.servicio.ListarRegistros().subscribe(
-      (datos) => {
-        this.listaRegistros = datos;
+      (datosCiudades) => {
+        this.listaRegistros = datosCiudades;
       },
       (err) => {
         alert("Error cargando el listado de registros");

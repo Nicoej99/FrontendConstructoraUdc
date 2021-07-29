@@ -22,7 +22,7 @@ export class SolicitudService {
     return this.http.get<SolicitudModelo[]>(`${this.url}/solicitud`);
   }
 
-  BuscarSolicitudImueble(id : number): Observable<SolicitudModelo[]>{
+  BuscarSolicitudImueble(id ?: number): Observable<SolicitudModelo[]>{
     
     return this.http.get<SolicitudModelo[]>(`${this.url}/inmuebles/${id}/solicituds`);
     

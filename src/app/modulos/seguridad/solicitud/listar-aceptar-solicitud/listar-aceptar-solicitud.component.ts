@@ -4,11 +4,11 @@ import { SolicitudModelo } from 'src/app/modelos/solicitud.modelos';
 import { SolicitudService } from 'src/app/servicios/solicitud.service';
 
 @Component({
-  selector: 'app-aceptar-solicitudes',
-  templateUrl: './aceptar-solicitudes.component.html',
-  styleUrls: ['./aceptar-solicitudes.component.css']
+  selector: 'app-listar-aceptar-solicitud',
+  templateUrl: './listar-aceptar-solicitud.component.html',
+  styleUrls: ['./listar-aceptar-solicitud.component.css']
 })
-export class AceptarSolicitudesComponent implements OnInit {
+export class ListarAceptarSolicitudComponent implements OnInit {
 
   pagina : number=1;
   regPorPagina:  number = DatosGenerales.numRegistrosPorPagina;
@@ -44,6 +44,5 @@ export class AceptarSolicitudesComponent implements OnInit {
 
     console.log(id);
   }
-  
 
 }

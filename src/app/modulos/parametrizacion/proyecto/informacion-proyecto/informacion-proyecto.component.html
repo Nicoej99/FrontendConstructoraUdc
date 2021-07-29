@@ -1,0 +1,37 @@
+<form>
+  <h3>Informacion Del proyecto </h3>
+  <ul>
+    <li *ngFor="let r of listaDatos">
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="http://localhost:3000/archivo/2/{{r.imagen}}" width="50px">
+              <span class="card-title">{{r.nombre}}</span>
+            </div>
+            <div class="card-content">
+              <p><strong>Descripcion:</strong>  {{r.descripcion}}</p>
+            </div>
+            <div class="card-content">
+              <p><strong>Ciudad:</strong>  {{nombreCiudad}}</p>
+            </div>
+            <div class="card-content">
+              <p><strong>Pais:</strong>  {{nombrePais}}</p>
+            </div>
+            <div class="card-content">
+              <p><strong>Inmuebles Disponibles: </strong></p>
+            </div>
+            <div *ngFor="let s of listaInmuebles">
+              <div class="card-content">
+                <p>{{s.identificador}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  &nbsp;&nbsp;
+  <a class="waves-effect blue waves-light btn" routerLink=""><i class="material-icons left">cancel</i>Volver</a>
+</form>
+<br />

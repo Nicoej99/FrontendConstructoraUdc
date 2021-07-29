@@ -14,6 +14,7 @@ import { element } from 'protractor';
 import { getHtmlTagDefinition } from '@angular/compiler';
 import { PaisService } from 'src/app/servicios/pais.service';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { ImagenesService } from 'src/app/servicios/imagenes.service';
 
 declare var iniciarSelect: any;
 declare var agregarCiudades: any;
@@ -28,17 +29,19 @@ export class RegistrarClienteComponent implements OnInit {
   fgValidador: FormGroup = new FormGroup({});
   documentMinLength = FormsConfig.DOCUMENT_MIN_LENGTH;
   nameMinLength = FormsConfig.NAME_MIN_LENGTH;
-  ListaCiudad: CiudadModelo[]= [];
-  
+  ListaCiudad: CiudadModelo[] = [];
+  nombreImagenTemp: String = "Sin imagen";
+
   constructor(private fb: FormBuilder,
     private servicio: ClienteService,
     private serviciopais: CiudadService,
-    private router: Router ) {
+    private servicioimagen: ImagenesService,
+    private router: Router) {
 
 
-   }
+  }
 
-   ConstruirFormulario(){
+  ConstruirFormulario() {
     this.fgValidador = this.fb.group({
       document: ['', [Validators.required, Validators.minLength(this.documentMinLength)]],
       name: ['', [Validators.required, Validators.minLength(this.nameMinLength)]],
@@ -47,17 +50,19 @@ export class RegistrarClienteComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.minLength(5)]],
       city: ['', [Validators.required, Validators.minLength(3)]],
-      birthdate: ['',[Validators.required]],
+      birthdate: ['', [Validators.required]],
       cliente: [''],
+      nomimagen: ['', [Validators.required]], 
+      imagen: ['', []], 
     });
-   }
+  }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.ConstruirFormulario();
     iniciarSelect();
     //this.obtenerCiudades();
     this.getAllPaises();
-    
+
   }
 
   get ObtenerFgvalidador() {
@@ -66,22 +71,21 @@ export class RegistrarClienteComponent implements OnInit {
 
   ValidarIdentificacion() {
 
-    alert(this.fgValidador.invalid+" - es aqui")
     if (!this.fgValidador.invalid) {
       alert("Formulario inválido, no entro")
     } else {
       let model = this.getClienteData();
       this.servicio.AlmacenarRegistro(model).subscribe(
-        (datos) =>{
+        (datos) => {
           alert("Registro almacenado correctamente.");
           this.router.navigate(["/inicio"]);
         },
-        (err) =>{
+        (err) => {
           alert("Error almacenando el registro");
         }
       );
-      
-      
+
+
     }
   }
 
@@ -94,10 +98,10 @@ export class RegistrarClienteComponent implements OnInit {
     model.nombre = this.fgv.name.value;
     model.numCelular = this.fgv.phone.value;
     model.fechaNacimiento = this.fgv.birthdate.value;
-    model.foto = "SOY UNA FOTO";
+    model.foto = this.fgv.nomimagen.value;
     model.ciudadId = parseInt(this.fgv.city.value);
     alert("Cliente guardado con exito");
-    
+
     return model;
   }
 
@@ -105,17 +109,17 @@ export class RegistrarClienteComponent implements OnInit {
     return this.fgValidador.controls;
   }
 
-  ModCLiente(){
+  ModCLiente() {
     let direccion = this.fgv.cliente.value;
     this.router.navigate([`/seguridad/editar-cliente/${String(direccion)}`])
-    
+
   }
 
   getAllPaises() {
     this.serviciopais.ListarRegistros().subscribe(
       data => {
         this.ListaCiudad = data;
-        setTimeout(() =>{
+        setTimeout(() => {
           iniciarSelect()
         }, 500);
       },
@@ -124,6 +128,30 @@ export class RegistrarClienteComponent implements OnInit {
       }
     );
   }
-  
+
+  SelectFile(event: any) {
+    if (event.target.files.length > 0) {
+      let archivo = event.target.files[0];
+      this.fgValidador.controls.imagen.setValue(archivo);
+    } else {
+      console.log("Se ha cancelado la selecciónd e archivo");
+    }
+  }
+
+  CargarImagenAlServidor() {
+    let formData = new FormData();
+    formData.append('file', this.fgValidador.controls.imagen.value);
+    this.servicioimagen.CargarCliente(formData).subscribe(
+      (datos) => {
+
+        this.nombreImagenTemp = datos.filename;
+        this.fgValidador.controls.nomimagen.setValue(datos.filename);
+      },
+      (error) => {
+        alert("Se ha producido un error al cargar el archivo.");
+      }
+    );
+  }
+
 
 }

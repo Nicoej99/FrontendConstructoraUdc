@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
+import { BloqueModelo } from '../modelos/bloque.modelos';
 import { ImagenProyectoModelo } from '../modelos/imagen-proyecto.modelos';
 import { ProyectoModelo } from '../modelos/proyecto.modelos';
 import { SeguridadService } from './seguridad.service';
@@ -25,6 +26,11 @@ export class ProyectoService {
 
   BuscarRegistro(id : number): Observable<ProyectoModelo>{
     return this.http.get<ProyectoModelo>(`${this.url}/proyecto/${id}`);
+  }
+
+  BuscarProyectoCiudad(id ?: number): Observable<ProyectoModelo[]>{
+    return this.http.get<ProyectoModelo[]>(`${this.url}/ciudads/${id}/proyectos`);
+    
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {

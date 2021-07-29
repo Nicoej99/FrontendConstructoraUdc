@@ -52,13 +52,13 @@ export class RechazarSolicitudComponent implements OnInit {
         this.servicio.ModificarRegistro(datos).subscribe(
           (datos) =>{
             alert("Registro rechazado correctamente.");
-            this.router.navigate(["/seguridad/aceptar-solicitudes"]);
+            this.router.navigate(["/seguridad/listar-aceptar-solicitudes"]);
           },
           (err) =>{
             alert("Error rechazado el registro");
           }
         );
-        this.router.navigate(["/seguridad/aceptar-solicitudes"]);
+        this.router.navigate(["/seguridad/listar-aceptar-solicitudes"]);
       },
       (err) => {
         alert("Error rechazando el registro");

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { CiudadModelo } from '../modelos/ciudad.modelo';
+import { ProyectoModelo } from '../modelos/proyecto.modelos';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
@@ -22,8 +23,13 @@ export class CiudadService {
     return this.http.get<CiudadModelo[]>(`${this.url}/ciudad`);
   }
 
-  BuscarRegistro(id : number): Observable<CiudadModelo>{
+  BuscarRegistro(id ?: number): Observable<CiudadModelo>{
     return this.http.get<CiudadModelo>(`${this.url}/ciudad/${id}`);
+  }
+
+  BuscarProyectosCiudad(id ?: number): Observable<ProyectoModelo[]>{
+    return this.http.get<ProyectoModelo[]>(`${this.url}/ciudads/${id}/proyectos`);
+    
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {

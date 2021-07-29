@@ -16,7 +16,7 @@ export class CerrarSesionComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicio.RemoverLocalStorage();
-    this.router.navigate(["/inicio"]);
+    this.router.navigate(["seguridad/iniciar-sesion"]);
   }
 
 }

@@ -13,13 +13,14 @@ import { ValidadorAdminGuard } from 'src/app/guardianes/validador-admin.guard';
 
 import { CrearSolicitudComponent } from './solicitud/crear-solicitud/crear-solicitud.component';
 import { EditarSolicitudComponent } from './solicitud/editar-solicitud/editar-solicitud.component';
-import { EliminarSolicitudComponent } from './solicitud/eliminar-solicitud/eliminar-solicitud.component';
 import { ListarSolicitudComponent } from './solicitud/listar-solicitud/listar-solicitud.component';
 
 import { InfoFinancieraComponent } from './info-financiera/info-financiera.component';
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
-import { AceptarSolicitudesComponent } from './solicitud/aceptar-solicitudes/aceptar-solicitudes.component';
 import { RechazarSolicitudComponent } from './solicitud/rechazar-solicitud/rechazar-solicitud.component';
+import { InformeVentasComponent } from './solicitud/informe-ventas/informe-ventas.component';
+import { AceptarSolicitudComponent } from './solicitud/aceptar-solicitud/aceptar-solicitud.component';
+import { ListarAceptarSolicitudComponent } from './solicitud/listar-aceptar-solicitud/listar-aceptar-solicitud.component';
 
 
 const routes: Routes = [
@@ -74,21 +75,30 @@ const routes: Routes = [
     component: EditarSolicitudComponent,
     canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
   },{
-    path: 'eliminar-solicitud/:id/:cid',
-    component: EliminarSolicitudComponent,
-    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
-  },{
     path: 'listar-solicitud',
     component: ListarSolicitudComponent,
     canActivate:[ValidadorSesionGuard]
   },{
-    path: 'aceptar-solicitudes',
-    component: AceptarSolicitudesComponent,
+    path: 'listar-aceptar-solicitudes',
+    component: ListarAceptarSolicitudComponent,
     canActivate:[ValidadorSesionGuard]
   },
+
+
   {
     path: 'rechazar-solicitud/:id/:cid',
     component: RechazarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard]
+  },{
+    path: 'aceptar-solicitud/:id/:cid',
+    component: AceptarSolicitudComponent,
+    canActivate:[ValidadorSesionGuard, ValidadorVendedorGuard]
+  },
+  
+  
+  {
+    path: 'informe-ventas',
+    component: InformeVentasComponent,
     canActivate:[ValidadorSesionGuard]
   }
 

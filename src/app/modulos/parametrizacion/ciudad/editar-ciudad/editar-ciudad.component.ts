@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { PaisModelo } from 'src/app/modelos/pais.modelos';
 import { CiudadService } from 'src/app/servicios/ciudad.service';
+import { PaisService } from 'src/app/servicios/pais.service';
+
+declare var iniciarSelect: any;
 
 @Component({
   selector: 'app-editar-ciudad',
@@ -12,9 +16,11 @@ import { CiudadService } from 'src/app/servicios/ciudad.service';
 export class EditarCiudadComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  ListaPais: PaisModelo[]= [];
 
   constructor(private fb: FormBuilder,
     private servicio: CiudadService,
+    private servicioPais: PaisService,
     private router: Router,
     private route: ActivatedRoute ) {
 
@@ -35,6 +41,7 @@ export class EditarCiudadComponent implements OnInit {
     this.ConstruirFormulario();
     let id = this.route.snapshot.params["id"];
     this.ObtenerRegistroPorId(id);
+    this.getAllPaises()
   }
   get ObtenerFgValidador(){
     return this.fgValidador.controls;
@@ -43,7 +50,7 @@ export class EditarCiudadComponent implements OnInit {
   ModificarRegistro() {
     let cod = this.ObtenerFgValidador.codigo.value;
     let nom = this.ObtenerFgValidador.nombre.value;
-    let paisid = this.ObtenerFgValidador.paisid.value;
+    let paisid = parseInt( this.ObtenerFgValidador.paisid.value);
     let id = this.ObtenerFgValidador.id.value;
     let modelo: CiudadModelo = new CiudadModelo();
     modelo.codigo = cod;
@@ -74,5 +81,20 @@ export class EditarCiudadComponent implements OnInit {
       }
     );
   }
+
+  getAllPaises() {
+    this.servicioPais.ListarRegistros().subscribe(
+      (data) => {
+        this.ListaPais = data;
+        setTimeout(()=>{
+          iniciarSelect()
+        }, 500);
+      },
+      error => {
+        console.error("Error loading paises");
+      }
+    );
+  }
+
 
 }

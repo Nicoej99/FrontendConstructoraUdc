@@ -14,8 +14,11 @@
                 <label class="active" for="descripcion">Descripcion</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="proyectoid" id="proyectoid" type="number" class="validate">
-                <label class="active" for="proyectoid">ProyectoId</label>
+                <select formControlName="proyectoid">
+                    <option value="" disabled selected>Selecciona tu proyecto</option>
+                    <option *ngFor="let proyecto of ListaProyecto" type="number" value='{{proyecto.id}}'>{{proyecto.nombre}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="row">

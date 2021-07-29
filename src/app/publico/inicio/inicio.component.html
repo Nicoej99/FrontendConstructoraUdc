@@ -1,5 +1,33 @@
 <h2>Bienvenido al sistema de constructoraUdC </h2>
 <div id="caja">
-
-    
 </div>
+
+<table class="table responsive-table">
+
+    <tbody>
+        <tr *ngFor="let r of listarProyectos | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+            <th id="proy">
+                <div class="row">
+                    <div class="col s12 m6 13">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="http://localhost:3000/archivo/2/{{r.imagen}}" width="50px">
+                                <span class="card-title">{{r.nombre}}</span>
+                            </div>
+                            <div class="card-content">
+                                <textarea class="materialize-textarea" readonly rows="2">{{r.descripcion}}</textarea>
+                            </div>
+                            <div class="card-action">
+                                <!--me debe llevar a la direccion con el id-->
+                                <a routerLink="../parametros/informacion-proyecto/{{r.id}}">mas informacion...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th>
+
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="CambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente">
+</pagination-controls>

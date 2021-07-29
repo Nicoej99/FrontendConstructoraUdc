@@ -11,8 +11,11 @@
                 <label class="active" for="nombre">Nombre</label>
             </div>
             <div class="input-field col s12">
-                <input formControlName="paisid" id="paisid" type="number" class="validate">
-                <label class="active" for="paisid">PaisId</label>
+                <select formControlName="paisid">
+                    <option value="" disabled selected>Selecciona tu pais</option>
+                    <option *ngFor="let pais of ListaPais" type="number" value='{{pais.id}}'>{{pais.nombre}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="row">
